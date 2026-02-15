@@ -343,9 +343,13 @@ def main():
             break
             
         rel_path = ""
-        if section_choice == '1': rel_path = os.path.join("podcasts", "m2a", "index.html")
-        elif section_choice == '2': rel_path = os.path.join("podcasts", "s2a", "index.html")
-        else: continue
+        if section_choice == '1': 
+            rel_path = os.path.join("podcasts", "m2a", "index.html")
+        elif section_choice == '2': 
+            rel_path = os.path.join("podcasts", "s2a", "index.html")
+        else:
+            print(f"Invalid choice '{section_choice}'. Please enter 1, 2, or q.")
+            continue
         
         file_path = os.path.join(script_dir, rel_path)
         content = get_file_content(file_path)
