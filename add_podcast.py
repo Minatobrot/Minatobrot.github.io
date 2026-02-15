@@ -1,14 +1,18 @@
 import os
 
-def get_input(prompt_text):
+def get_input(prompt_text, allow_empty=False, default=None):
     """
     Get input from the user with a prompt.
     """
     try:
         val = input(f"{prompt_text}: ").strip()
-        while not val:
+        while not val and not allow_empty:
             print("Input cannot be empty. Please try again.")
             val = input(f"{prompt_text}: ").strip()
+        
+        if not val and default:
+            return default
+            
         return val
     except EOFError:
         return ""
@@ -157,7 +161,9 @@ def main():
         # Collection Inputs
         archive_link = get_input("Archive Link")
         title = get_input("Title of Podcast")
-        details = get_input("Details and Infos")
+        
+        # Details with default behavior
+        details = get_input(f"Details and Infos (Press Enter for default: 'Ein Podcast über {title}')", allow_empty=True, default=f"Ein Podcast über {title}")
         
         # Get multiple authors
         print("Authors (Enter one by one, press Enter on empty line to finish):")
