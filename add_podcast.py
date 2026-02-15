@@ -13,29 +13,55 @@ def get_input(prompt_text):
     except EOFError:
         return ""
 
-def format_podcast_entry(title, details, archive_link, authors):
+def format_podcast_entry(title, details, archive_link, authors, sources):
     """
     Formats the podcast entry as HTML.
     """
-    # Create HTML entry
+    # Format Authors naturally: "von Autor1, Autor2 und Autor3"
+    authors_text = "Anonym"
+    if isinstance(authors, list) and authors:
+        if len(authors) == 1:
+            authors_text = f"von {authors[0]}"
+        else:
+            # Join all except last with comma, and last with " und "
+            all_but_last = ", ".join(authors[:-1])
+            last = authors[-1]
+            authors_text = f"von {all_but_last} und {last}"
+    elif authors:
+         authors_text = f"von {authors}"
+
+    # Create HTML formatted list for sources if multiple
+    sources_html = ""
+    if isinstance(sources, list) and sources:
+        sources_html = '<ul class="source-list">' + ''.join([f'<li><a href="{s}" target="_blank">{s}</a></li>' if s.startswith('http') else f'<li>{s}</li>' for s in sources]) + '</ul>'
+    else:
+        sources_html = sources
+
     return f"""
     <!-- NEUE EPISODE: {title} -->
     <article class="podcast-card">
         <h3>{title}</h3>
-        <p>{details}</p>
+        <p class="podcast-description">{details}</p>
         
         <audio controls preload="none">
             <source src="{archive_link}" type="audio/mpeg">
             Your browser does not support the audio element.
         </audio>
 
+        <p class="podcast-author">{authors_text}</p>
+
         <details>
             <summary>Details & Infos</summary>
-            <ul class="podcast-details">
-                <li class="podcast-item"><strong>Titel:</strong> {title}</li>
-                <li class="podcast-item"><strong>Info:</strong> {details}</li>
-                <li class="podcast-item"><strong>Autoren:</strong> {authors}</li>
-            </ul>
+            <div class="details-content">
+                <ul class="podcast-details">
+                    <li class="podcast-item"><strong>Titel:</strong> {title}</li>
+                    <li class="podcast-item"><strong>Info:</strong> {details}</li>
+                </ul>
+                <div class="podcast-extra">
+                    <strong>Quellen:</strong>
+                    {sources_html}
+                </div>
+            </div>
         </details>
     </article>
 """
@@ -74,6 +100,22 @@ def add_podcast_to_file(file_path, entry_html):
     except Exception as e:
         print(f"Error processing file: {e}")
         return False
+
+def get_multiline_input(prompt_text):
+    """
+    Get multiple items as input until empty line.
+    """
+    items = []
+    print(f"{prompt_text} (Enter one by one, press Enter on empty line to finish):")
+    while True:
+        try:
+            val = input(f" - ").strip()
+            if not val:
+                break
+            items.append(val)
+        except EOFError:
+            break
+    return items
 
 def main():
     print("========================================")
@@ -116,17 +158,37 @@ def main():
         archive_link = get_input("Archive Link")
         title = get_input("Title of Podcast")
         details = get_input("Details and Infos")
-        authors = get_input("Authors")
         
+        # Get multiple authors
+        print("Authors (Enter one by one, press Enter on empty line to finish):")
+        authors = []
+        while True:
+            val = input(" - ").strip()
+            if not val:
+                break
+            authors.append(val)
+        if not authors:
+            authors = ["Anonym"]
+
+        # Get multiple sources/references
+        print("Sources (Quellen) (Enter one by one, press Enter on empty line to finish):")
+        sources = []
+        while True:
+            val = input(" - ").strip()
+            if not val:
+                break
+            sources.append(val)
+
         # Format HTML
-        entry_html = format_podcast_entry(title, details, archive_link, authors)
+        entry_html = format_podcast_entry(title, details, archive_link, authors, sources)
         
         # Review
         print("\n--- Preview ---")
         print(f"Title:   {title}")
         print(f"Details: {details}")
         print(f"Link:    {archive_link}")
-        print(f"Authors: {authors}")
+        print(f"Authors: {', '.join(authors)}")
+        print(f"Sources: {len(sources)} items")
         
         confirm = input("Add this entry? (y/n): ").strip().lower()
         if confirm == 'y':

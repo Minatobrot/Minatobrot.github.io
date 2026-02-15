@@ -166,14 +166,53 @@ footer {
     border-radius: 8px;
     border-left: 4px solid var(--accent-color);
     transition: transform 0.2s;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Scrollbar styling for the card */
+.podcast-card::-webkit-scrollbar {
+    width: 8px;
+}
+.podcast-card::-webkit-scrollbar-track {
+    background: #2a2a2a;
+    border-radius: 4px;
+}
+.podcast-card::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 4px;
+}
+.podcast-card::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
 }
 
 .podcast-card:hover { transform: translateY(-5px); }
 
+/* Mobile Override */
+@media (max-width: 600px) {
+    .podcast-card {
+        height: auto;
+        overflow-y: visible;
+    }
+}
+
 audio {
     width: 100%;
-    margin: 15px 0;
+    margin-top: 15px;
+    margin-bottom: 5px; /* Reduced bottom margin */
+    flex-shrink: 0; /* Keep audio player visible/unstretched */
     filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Adjust for dark mode */
+}
+
+/* Author Section - New Placement */
+.podcast-author {
+    font-size: 0.9rem;
+    color: #ccc;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 15px;
 }
 
 details {
@@ -182,6 +221,7 @@ details {
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
+    margin-top: auto; /* Push to bottom if content is short, usually good */
 }
 
 summary {
@@ -192,4 +232,38 @@ summary {
 
 ul.podcast-details { padding-left: 20px; margin-top: 10px; }
 li.podcast-item { margin-bottom: 5px; color: #ccc; }
+
+/* Lists for Sources and Authors */
+.podcast-extra {
+    margin-top: 12px;
+    border-top: 1px solid #444;
+    padding-top: 8px;
+}
+
+.podcast-extra strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+}
+
+ul.source-list, ul.author-list {
+    margin: 0;
+    padding-left: 20px;
+    list-style-type: square;
+}
+
+ul.source-list li, ul.author-list li {
+    margin-bottom: 4px;
+    color: #bbb;
+    word-break: break-all; /* Links break nicely */
+}
+
+ul.source-list li a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+ul.source-list li a:hover {
+    text-decoration: underline;
+}
 
