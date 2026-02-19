@@ -41,14 +41,42 @@ def format_podcast_entry(title, details, archive_link, authors, sources):
     else:
         sources_html = sources
 
+    # Determine MIME type(s) and sources for Maximum Compatibility
+    sources_block = ""
+    link_lower = archive_link.lower()
+    
+    if link_lower.endswith('.m4a'):
+        # M4A / AAC Compatibility
+        sources_block = f"""<source src="{archive_link}" type="audio/mp4">
+            <source src="{archive_link}" type="audio/x-m4a">
+            <source src="{archive_link}" type="audio/aac">"""
+        
+    elif link_lower.endswith('.mp3'):
+        # MP3 Compatibility
+        sources_block = f"""<source src="{archive_link}" type="audio/mpeg">
+            <source src="{archive_link}" type="audio/mp3">"""
+        
+    elif link_lower.endswith('.ogg') or link_lower.endswith('.oga'):
+        # OGG
+        sources_block = f"""<source src="{archive_link}" type="audio/ogg">"""
+        
+    elif link_lower.endswith('.wav'):
+        # WAV
+        sources_block = f"""<source src="{archive_link}" type="audio/wav">"""
+        
+    else:
+        # Fallback
+        sources_block = f"""<source src="{archive_link}" type="audio/mpeg">
+            <source src="{archive_link}" type="audio/mp4">"""
+
     return f"""
     <!-- NEUE EPISODE: {title} -->
     <article class="podcast-card">
         <h3>{title}</h3>
         <p class="podcast-description">{details}</p>
         
-        <audio controls preload="none">
-            <source src="{archive_link}" type="audio/mpeg">
+        <audio controls preload="metadata">
+            {sources_block}
             Your browser does not support the audio element.
         </audio>
 
@@ -131,7 +159,7 @@ def main():
     while True:
         print("\nChoose the podcast section to add to:")
         print("1. M2A (podcasts/m2a/index.html)")
-        print("2. S2A (podcasts/s2a/index.html)")
+        print("2. S2E (podcasts/s2e/index.html)")
         print("q. Quit")
         
         choice = input("Enter your choice (1/2/q): ").strip().lower()
@@ -143,7 +171,7 @@ def main():
         if choice == '1':
             target_rel_path = os.path.join("podcasts", "m2a", "index.html")
         elif choice == '2':
-            target_rel_path = os.path.join("podcasts", "s2a", "index.html")
+            target_rel_path = os.path.join("podcasts", "s2e", "index.html")
         else:
             print("Invalid choice. Please try again.")
             continue

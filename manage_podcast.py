@@ -206,7 +206,32 @@ def edit_podcast_logic(podcast, content, file_path):
     elif choice == '3': # Link
         new_link = get_input("New Audio Link")
         if new_link:
-            new_block = re.sub(r'<source src=".*?"', f'<source src="{new_link}"', new_block)
+            # Generate Multi-Source Block
+            sources_block = ""
+            link_lower = new_link.lower()
+            
+            if link_lower.endswith('.m4a'):
+                sources_block = f"""<source src="{new_link}" type="audio/mp4">
+        <source src="{new_link}" type="audio/x-m4a">
+        <source src="{new_link}" type="audio/aac">"""
+            elif link_lower.endswith('.mp3'):
+                sources_block = f"""<source src="{new_link}" type="audio/mpeg">
+        <source src="{new_link}" type="audio/mp3">"""
+            elif link_lower.endswith('.ogg') or link_lower.endswith('.oga'):
+                sources_block = f"""<source src="{new_link}" type="audio/ogg">"""
+            elif link_lower.endswith('.wav'):
+                sources_block = f"""<source src="{new_link}" type="audio/wav">"""
+            else:
+                sources_block = f"""<source src="{new_link}" type="audio/mpeg">
+        <source src="{new_link}" type="audio/mp4">"""
+
+            # Remove existing source tags and insert new block
+            new_block = re.sub(r'<source src=".*?"(?: type=".*?")?>', '', new_block)
+            new_block = re.sub(r'<audio controls preload=".*?">\s*', f'<audio controls preload="metadata">\n        {sources_block}\n        ', new_block, count=1)
+            
+            # Ensure preload is metadata
+            if 'preload="metadata"' not in new_block:
+                new_block = re.sub(r'preload="none"', 'preload="metadata"', new_block)
 
     elif choice == '4': # Authors
         current_authors = parse_authors_from_block(new_block)
@@ -335,7 +360,7 @@ def main():
     while True:
         print("\nChoose section to manage:")
         print("1. M2A")
-        print("2. S2A")
+        print("2. S2E")
         print("q. Quit")
         
         section_choice = input("Choice: ").strip().lower()
@@ -346,7 +371,7 @@ def main():
         if section_choice == '1': 
             rel_path = os.path.join("podcasts", "m2a", "index.html")
         elif section_choice == '2': 
-            rel_path = os.path.join("podcasts", "s2a", "index.html")
+            rel_path = os.path.join("podcasts", "s2e", "index.html")
         else:
             print(f"Invalid choice '{section_choice}'. Please enter 1, 2, or q.")
             continue

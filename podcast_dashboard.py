@@ -112,13 +112,46 @@ def generate_html_block(title, details, link, authors, sources):
                     <ul class="source-list">{list_items}</ul>
                 </div>'''
 
+    # Determine MIME type(s) and sources for Maximum Compatibility
+    sources_block = ""
+    link_lower = link.lower()
+    
+    if link_lower.endswith('.m4a'):
+        # M4A / AAC Compatibility
+        # 1. audio/mp4 (Modern Standard, Safari, iOS, Chrome, Edge)
+        # 2. audio/x-m4a (Older implementation, some Android specifics)
+        # 3. audio/aac (Raw AAC, sometimes used)
+        sources_block = f"""<source src="{link}" type="audio/mp4">
+        <source src="{link}" type="audio/x-m4a">
+        <source src="{link}" type="audio/aac">"""
+        
+    elif link_lower.endswith('.mp3'):
+        # MP3 Compatibility
+        sources_block = f"""<source src="{link}" type="audio/mpeg">
+        <source src="{link}" type="audio/mp3">"""
+        
+    elif link_lower.endswith('.ogg') or link_lower.endswith('.oga'):
+        # OGG / Vorbis / Opus
+        sources_block = f"""<source src="{link}" type="audio/ogg">
+        <source src="{link}" type="audio/vorbis">"""
+        
+    elif link_lower.endswith('.wav'):
+        # WAV
+        sources_block = f"""<source src="{link}" type="audio/wav">
+        <source src="{link}" type="audio/x-wav">"""
+        
+    else:
+        # Fallback / Generic
+        sources_block = f"""<source src="{link}" type="audio/mpeg">
+        <source src="{link}" type="audio/mp4">"""
+
     return f"""<!-- NEUE EPISODE: {title} -->
 <article class="podcast-card">
     <h3>{title}</h3>
     <p class="podcast-description">{details}</p>
     
-    <audio controls preload="none">
-        <source src="{link}" type="audio/mpeg">
+    <audio controls preload="metadata">
+        {sources_block}
         Your browser does not support the audio element.
     </audio>
 
@@ -207,9 +240,9 @@ class PodcastDashboard:
                                     command=lambda: self.switch_section("m2a"), bg=COLORS['accent'], fg='black')
         self.btn_m2a.pack(side=tk.LEFT, padx=5)
         
-        self.btn_s2a = DashboardBtn(controls_frame, text="S2A PODCASTS", 
-                                    command=lambda: self.switch_section("s2a"), bg=COLORS['card_bg'], fg=COLORS['text'])
-        self.btn_s2a.pack(side=tk.LEFT, padx=5)
+        self.btn_s2e = DashboardBtn(controls_frame, text="S2E PODCASTS", 
+                                    command=lambda: self.switch_section("s2e"), bg=COLORS['card_bg'], fg=COLORS['text'])
+        self.btn_s2e.pack(side=tk.LEFT, padx=5)
         
         DashboardBtn(controls_frame, text="REFRESH", command=self.load_podcasts, bg=COLORS['btn_bg'], fg=COLORS['text']).pack(side=tk.LEFT, padx=20)
         DashboardBtn(controls_frame, text="+ NEW EPISODE", command=self.add_podcast_dialog, bg=COLORS['secondary'], fg='black').pack(side=tk.LEFT)
@@ -263,13 +296,13 @@ class PodcastDashboard:
             self.btn_m2a.default_bg = COLORS['accent']
             self.btn_m2a.default_fg = 'black'
             
-            self.btn_s2a.configure(bg=COLORS['card_bg'], fg=COLORS['text'])
-            self.btn_s2a.default_bg = COLORS['card_bg']
-            self.btn_s2a.default_fg = COLORS['text']
+            self.btn_s2e.configure(bg=COLORS['card_bg'], fg=COLORS['text'])
+            self.btn_s2e.default_bg = COLORS['card_bg']
+            self.btn_s2e.default_fg = COLORS['text']
         else:
-            self.btn_s2a.configure(bg=COLORS['accent'], fg='black')
-            self.btn_s2a.default_bg = COLORS['accent']
-            self.btn_s2a.default_fg = 'black'
+            self.btn_s2e.configure(bg=COLORS['accent'], fg='black')
+            self.btn_s2e.default_bg = COLORS['accent']
+            self.btn_s2e.default_fg = 'black'
             
             self.btn_m2a.configure(bg=COLORS['card_bg'], fg=COLORS['text'])
             self.btn_m2a.default_bg = COLORS['card_bg']
