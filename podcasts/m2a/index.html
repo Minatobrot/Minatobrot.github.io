@@ -76,11 +76,12 @@
     <h3>Hard Rock</h3>
     <p class="podcast-description">Ein Podcast über Hard Rock</p>
     
-    <audio controls preload="metadata">
-        <source src="https://moodle.ksasz.ch/pluginfile.php/153726/mod_folder/content/0/01%20Franz%20Feuerwehr.mp3?forcedownload=0" type="audio/mpeg">
-        <source src="https://moodle.ksasz.ch/pluginfile.php/153726/mod_folder/content/0/01%20Franz%20Feuerwehr.mp3?forcedownload=0" type="audio/mp4">
-        Your browser does not support the audio element.
-    </audio>
+    <div class="moodle-container">
+        <a href="https://moodle.ksasz.ch/pluginfile.php/153726/mod_folder/content/0/01%20Franz%20Feuerwehr.mp3?forcedownload=1" target="_blank" target="_blank" target="_blank" class="moodle-button">
+            🔒 Höre es dir auf Moodle an (Login benötigt)
+        </a>
+        <p class="moodle-note">Diese Episode ist auf moodle. Klicke zum Öffnen/Herunterladen.</p>
+    </div>
 
     <p class="podcast-author">von Henrik und Philip</p>
 
@@ -91,9 +92,15 @@
                 <li class="podcast-item"><strong>Titel:</strong> Hard Rock</li>
                 <li class="podcast-item"><strong>Info:</strong> Ein Podcast über Hard Rock</li>
             </ul>
+            
         </div>
     </details>
 </article>
+
+
+
+
+
 
 
 
@@ -320,73 +327,5 @@
     <p>&copy; 2026 Hosted by Panumic | Bildungszwecke | <a href="https://archive.org" style="color: #666;">Medien via Internet Archive</a></p>
 </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const audioElements = document.querySelectorAll('audio');
-
-        audioElements.forEach(audio => {
-            const sources = audio.querySelectorAll('source');
-            let isMoodle = false;
-            let moodleSrc = '';
-
-            sources.forEach(source => {
-                if (source.src.includes('moodle') || source.src.includes('ksasz.ch')) {
-                    isMoodle = true;
-                    moodleSrc = source.src;
-                }
-            });
-
-            if (isMoodle) {
-                // Add play event listener
-                audio.addEventListener('play', function(event) {
-                    if (audio.dataset.authCheck) return; // Already checked
-
-                    event.preventDefault();
-                    audio.pause();
-
-                    const userConfirmed = confirm(
-                        "⚠️ Login Required for Moodle Content\n\n" +
-                        "This audio file is hosted on Moodle (KSASZ). You need to be logged in to listen.\n\n" +
-                        "Click OK to open the Moodle login page in a new tab. Once you've logged in, come back here and press play again."
-                    );
-
-                    if (userConfirmed) {
-                        audio.dataset.authCheck = "true";
-                        window.open(moodleSrc, '_blank');
-                    }
-                });
-
-                // Find the title element in this podcast card to add visual indicator if not present
-                const card = audio.closest('.podcast-card');
-                if (card) {
-                    const title = card.querySelector('h3');
-                    if (title && !title.querySelector('.moodle-indicator')) {
-                         const indicator = document.createElement('span');
-                         indicator.className = 'moodle-indicator';
-                         indicator.textContent = '🔒 MOODLE';
-                         indicator.title = 'Requires Moodle Login';
-                         title.appendChild(indicator);
-                    }
-                }
-            }
-        });
-    });
-</script>
-
-<style>
-    .moodle-indicator {
-        display: inline-block;
-        background-color: #f39c12;
-        color: white;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 0.6em; /* Smaller relative to h3 */
-        margin-left: 8px;
-        vertical-align: middle;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-</style>
 </body>
 </html>

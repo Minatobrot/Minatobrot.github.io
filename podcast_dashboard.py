@@ -43,8 +43,15 @@ def extract_podcasts(content):
             if "Hier klicken" in details: details = ""
             
         link = ""
+        # Try to find link in audio source first
         m_link = re.search(r'<source src="(.*?)"', inner_html)
-        if m_link: link = m_link.group(1)
+        if m_link: 
+            link = m_link.group(1)
+        else:
+            # Try to find link in moodle button
+            m_link_btn = re.search(r'href="(.*?)" class="moodle-button"', inner_html)
+            if m_link_btn:
+                link = m_link_btn.group(1)
 
         # Authors
         authors = []
@@ -109,58 +116,71 @@ def generate_html_block(title, details, link, authors, sources):
             else:
                 list_items += f'<li>{s}</li>'
         sources_html_block = f'''
-                <div class="podcast-extra">
-                    <strong>Quellen:</strong>
-                    <ul class="source-list">{list_items}</ul>
-                </div>'''
+        <div class="podcast-sources">
+            <h4 style="margin-bottom: 5px;">Quellen:</h4>
+            <ul>
+                {list_items}
+            </ul>
+        </div>
+        '''
 
-    # Determine MIME type(s) and sources for Maximum Compatibility
-    sources_block = ""
+    # Output Format (Player vs Button)
     link_lower = link.lower()
-    
-    # Check for Moodle link to add indicator
-    moodle_indicator = ""
-    if "moodle" in link_lower or "ksasz.ch" in link_lower:
-        moodle_indicator = ' <span class="moodle-indicator" title="Requires Moodle Login">🔒 MOODLE</span>'
-    
-    if link_lower.endswith('.m4a'):
-        # M4A / AAC Compatibility
-        # 1. audio/mp4 (Modern Standard, Safari, iOS, Chrome, Edge)
-        # 2. audio/x-m4a (Older implementation, some Android specifics)
-        # 3. audio/aac (Raw AAC, sometimes used)
-        sources_block = f"""<source src="{link}" type="audio/mp4">
-        <source src="{link}" type="audio/x-m4a">
-        <source src="{link}" type="audio/aac">"""
+    is_moodle = "moodle" in link_lower or "ksasz.ch" in link_lower
+
+    if is_moodle:
+        # MOODLE LOGIC: Button instead of Player
         
-    elif link_lower.endswith('.mp3'):
-        # MP3 Compatibility
-        sources_block = f"""<source src="{link}" type="audio/mpeg">
-        <source src="{link}" type="audio/mp3">"""
+        # Ensure forcedownload=1
+        if "forcedownload=0" in link:
+            link = link.replace("forcedownload=0", "forcedownload=1")
+        elif "forcedownload=" not in link:
+             if "?" in link:
+                 link += "&forcedownload=1"
+             else:
+                 link += "?forcedownload=1"
         
-    elif link_lower.endswith('.ogg') or link_lower.endswith('.oga'):
-        # OGG / Vorbis / Opus
-        sources_block = f"""<source src="{link}" type="audio/ogg">
-        <source src="{link}" type="audio/vorbis">"""
-        
-    elif link_lower.endswith('.wav'):
-        # WAV
-        sources_block = f"""<source src="{link}" type="audio/wav">
-        <source src="{link}" type="audio/x-wav">"""
-        
+        # Generate Button HTML
+        content_block = f"""<div class="moodle-container">
+        <a href="{link}" target="_blank" class="moodle-button">
+            🔒 Höre es dir auf Moodle an (Login benötigt)
+        </a>
+        <p class="moodle-note">Diese Episode ist auf moodle. Klicke zum Öffnen/Herunterladen.</p>
+    </div>"""
+
     else:
-        # Fallback / Generic
-        sources_block = f"""<source src="{link}" type="audio/mpeg">
-        <source src="{link}" type="audio/mp4">"""
+        # STANDARD LOGIC: Audio Player
+        
+        # Determine MIME type(s)
+        sources_block = ""
+        if link_lower.endswith('.m4a'):
+            sources_block = f"""<source src="{link}" type="audio/mp4">
+            <source src="{link}" type="audio/x-m4a">
+            <source src="{link}" type="audio/aac">"""
+        elif link_lower.endswith('.mp3'):
+            sources_block = f"""<source src="{link}" type="audio/mpeg">
+            <source src="{link}" type="audio/mp3">"""
+        elif link_lower.endswith('.ogg') or link_lower.endswith('.oga'):
+            sources_block = f"""<source src="{link}" type="audio/ogg">
+            <source src="{link}" type="audio/vorbis">"""
+        elif link_lower.endswith('.wav'):
+             sources_block = f"""<source src="{link}" type="audio/wav">
+             <source src="{link}" type="audio/x-wav">"""
+        else:
+             sources_block = f"""<source src="{link}" type="audio/mpeg">
+             <source src="{link}" type="audio/mp4">"""
+
+        content_block = f"""<audio controls preload="metadata">
+        {sources_block}
+        Your browser does not support the audio element.
+    </audio>"""
 
     return f"""<!-- NEUE EPISODE: {title} -->
 <article class="podcast-card">
-    <h3>{title}{moodle_indicator}</h3>
+    <h3>{title}</h3>
     <p class="podcast-description">{details}</p>
     
-    <audio controls preload="metadata">
-        {sources_block}
-        Your browser does not support the audio element.
-    </audio>
+    {content_block}
 
     <p class="podcast-author">{authors_text}</p>
 
@@ -170,7 +190,8 @@ def generate_html_block(title, details, link, authors, sources):
             <ul class="podcast-details">
                 <li class="podcast-item"><strong>Titel:</strong> {title}</li>
                 <li class="podcast-item"><strong>Info:</strong> {details}</li>
-            </ul>{sources_html_block}
+            </ul>
+            {sources_html_block}
         </div>
     </details>
 </article>"""
