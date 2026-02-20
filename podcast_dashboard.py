@@ -32,6 +32,8 @@ def extract_podcasts(content):
             return m.group(1).strip() if m else default
 
         title = get_text(r'<h3>(.*?)</h3>', "Unknown Title")
+        # Remove moodle indicator from title if present
+        title = re.sub(r'<span class="moodle-indicator">.*?</span>', '', title).strip()
         
         # Details: try structured p, fall back to generic p
         details = get_text(r'<p class="podcast-description">(.*?)</p>')
@@ -116,6 +118,11 @@ def generate_html_block(title, details, link, authors, sources):
     sources_block = ""
     link_lower = link.lower()
     
+    # Check for Moodle link to add indicator
+    moodle_indicator = ""
+    if "moodle" in link_lower or "ksasz.ch" in link_lower:
+        moodle_indicator = ' <span class="moodle-indicator" title="Requires Moodle Login">🔒 MOODLE</span>'
+    
     if link_lower.endswith('.m4a'):
         # M4A / AAC Compatibility
         # 1. audio/mp4 (Modern Standard, Safari, iOS, Chrome, Edge)
@@ -147,7 +154,7 @@ def generate_html_block(title, details, link, authors, sources):
 
     return f"""<!-- NEUE EPISODE: {title} -->
 <article class="podcast-card">
-    <h3>{title}</h3>
+    <h3>{title}{moodle_indicator}</h3>
     <p class="podcast-description">{details}</p>
     
     <audio controls preload="metadata">

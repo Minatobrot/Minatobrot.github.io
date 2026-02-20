@@ -45,5 +45,73 @@
     <p>&copy; 2026 Hosted by Panumic | Bildungszwecke</p>
 </footer>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const audioElements = document.querySelectorAll('audio');
+
+        audioElements.forEach(audio => {
+            const sources = audio.querySelectorAll('source');
+            let isMoodle = false;
+            let moodleSrc = '';
+
+            sources.forEach(source => {
+                if (source.src.includes('moodle') || source.src.includes('ksasz.ch')) {
+                    isMoodle = true;
+                    moodleSrc = source.src;
+                }
+            });
+
+            if (isMoodle) {
+                // Add play event listener
+                audio.addEventListener('play', function(event) {
+                    if (audio.dataset.authCheck) return; // Already checked
+
+                    event.preventDefault();
+                    audio.pause();
+
+                    const userConfirmed = confirm(
+                        "⚠️ Login Required for Moodle Content\n\n" +
+                        "This audio file is hosted on Moodle (KSASZ). You need to be logged in to listen.\n\n" +
+                        "Click OK to open the Moodle login page in a new tab. Once you've logged in, come back here and press play again."
+                    );
+
+                    if (userConfirmed) {
+                        audio.dataset.authCheck = "true";
+                        window.open(moodleSrc, '_blank');
+                    }
+                });
+
+                // Find the title element in this podcast card to add visual indicator if not present
+                const card = audio.closest('.podcast-card');
+                if (card) {
+                    const title = card.querySelector('h3');
+                    if (title && !title.querySelector('.moodle-indicator')) {
+                         const indicator = document.createElement('span');
+                         indicator.className = 'moodle-indicator';
+                         indicator.textContent = '🔒 MOODLE';
+                         indicator.title = 'Requires Moodle Login';
+                         title.appendChild(indicator);
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+    .moodle-indicator {
+        display: inline-block;
+        background-color: #f39c12;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.6em; /* Smaller relative to h3 */
+        margin-left: 8px;
+        vertical-align: middle;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>
 </body>
 </html>
