@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Mein Editor</title>
+  <!-- 1. Quill Styles laden -->
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet">
+  <style>
+    #editor { height: 500px; background: white; }
+    .controls { margin-bottom: 10px; }
+    /* Druck-Optimierung: Nur den Editor-Inhalt drucken */
+    @media print {
+      body * { display: none; }
+      #editor, #editor * { display: block; }
+      .ql-toolbar { display: none; } /* Toolbar beim Drucken ausblenden */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <button onclick="window.print()">Dokument drucken</button>
+  </div>
+
+  <!-- 2. Der Editor-Container -->
+  <div id="editor"></div>
+
+  <!-- 3. Quill Library laden -->
+  <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+
+  <script>
+    // 4. Editor initialisieren
+    var quill = new Quill('#editor', {
+      theme: 'snow',
+      placeholder: 'Hier tippen...'
+    });
+
+    // 5. ALLE Grammatik- & Rechtschreibhilfen deaktivieren
+    // Wir greifen direkt auf das editierbare Element zu
+    const root = quill.root;
+    root.setAttribute('spellcheck', 'false');       // Keine roten Unterstreichungen
+    root.setAttribute('autocorrect', 'off');       // Keine automatische Korrektur
+    root.setAttribute('autocapitalize', 'off');    // Keine automatische Grossschreibung
+    root.setAttribute('autocomplete', 'off');      // Keine Wortvorschläge
+  </script>
+
+</body>
+</html>

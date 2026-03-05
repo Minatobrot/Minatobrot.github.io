@@ -267,3 +267,34 @@ ul.source-list li a:hover {
     text-decoration: underline;
 }
 
+/* Moodle Button Styling */
+.moodle-container {
+    padding: 15px 0;
+    text-align: center;
+}
+
+.moodle-button {
+    display: inline-block;
+    background-color: #f39c12; /* Orange color fitting for Moodle usually, or use your accent */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: 1px solid #e67e22;
+}
+
+.moodle-button:hover {
+    background-color: #e67e22;
+    text-decoration: none;
+    color: white;
+}
+
+.moodle-note {
+    font-size: 0.8em;
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+}
+
