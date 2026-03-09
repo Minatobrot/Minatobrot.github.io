@@ -37,6 +37,11 @@ def extract_podcasts(content):
         
         # Details: try structured p, fall back to generic p
         details = get_text(r'<p class="podcast-description">(.*?)</p>')
+        
+        # Fallback: check inside details/summary hidden block
+        if not details:
+            details = get_text(r'<li class="podcast-item"><strong>Info:</strong> (.*?)</li>')
+
         if not details:
             details = get_text(r'<p>(.*?)</p>') 
             # Filter out "Hier klicken zum Anhören" junk if present from old entries
@@ -178,7 +183,6 @@ def generate_html_block(title, details, link, authors, sources):
     return f"""<!-- NEUE EPISODE: {title} -->
 <article class="podcast-card">
     <h3>{title}</h3>
-    <p class="podcast-description">{details}</p>
     
     {content_block}
 
