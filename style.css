@@ -166,10 +166,9 @@ footer {
     border-radius: 8px;
     border-left: 4px solid var(--accent-color);
     transition: transform 0.2s;
-    height: 330px;
+    height: auto; /* Compact height based on content */
     display: flex;
     flex-direction: column;
-    overflow-y: auto;
 }
 
 /* Scrollbar styling for the card */
@@ -192,10 +191,12 @@ footer {
 
 /* Mobile Override */
 @media (max-width: 600px) {
+    /*
     .podcast-card {
         height: auto;
         overflow-y: visible;
     }
+    */
 }
 
 audio {
@@ -221,7 +222,7 @@ details {
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
-    margin-top: auto; /* Push to bottom if content is short, usually good */
+    margin-top: 15px; /* Fixed margin to avoid large empty space */
 }
 
 summary {
