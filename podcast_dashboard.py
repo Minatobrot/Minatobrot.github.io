@@ -1,8 +1,9 @@
 import tkinter as tk
-from tkinter import ttk, messagebox, simpledialog
+from tkinter import ttk, messagebox, simpledialog, filedialog
 import os
 import re
 import webbrowser
+import shutil
 
 # --- BACKEND LOGIC (Copied/Adapted from manage_podcast.py) ---
 
@@ -116,18 +117,27 @@ def generate_html_block(title, details, link, authors, sources):
     if sources:
         list_items = ""
         for s in sources:
-            if s.startswith("http"):
-                list_items += f'<li><a href="{s}" target="_blank">{s}</a></li>'
+            s_clean = s.strip()
+            if not s_clean: continue
+            
+            if s_clean.lower().startswith("http"):
+                list_items += f'<li><a href="{s_clean}" target="_blank">{s_clean}</a></li>'
+            elif s_clean.lower().endswith(".pdf"):
+                # Handle local PDF link
+                name = os.path.basename(s_clean)
+                list_items += f'<li><a href="{s_clean}" target="_blank">📄 PDF: {name}</a></li>'
             else:
-                list_items += f'<li>{s}</li>'
-        sources_html_block = f'''
-        <div class="podcast-sources">
-            <h4 style="margin-bottom: 5px;">Quellen:</h4>
-            <ul>
-                {list_items}
-            </ul>
-        </div>
-        '''
+                list_items += f'<li>{s_clean}</li>'
+        
+        if list_items:
+            sources_html_block = f'''
+            <div class="podcast-sources">
+                <h4 style="margin-bottom: 5px;">Quellen:</h4>
+                <ul>
+                    {list_items}
+                </ul>
+            </div>
+            '''
 
     # Output Format (Player vs Button)
     link_lower = link.lower()
@@ -530,12 +540,53 @@ class EditWindow:
         if existing_authors:
              self.authors_txt.insert("1.0", "\n".join(existing_authors))
 
+        # Sources Input
+        frame_sources = tk.Frame(container, bg=COLORS['bg'])
+        frame_sources.pack(fill=tk.X, pady=(0, 5))
+        
+        tk.Label(frame_sources, text="SOURCES (One URL or Path per line)", font=("Segoe UI", 10, "bold"), bg=COLORS['bg'], fg=COLORS['accent']).pack(side=tk.LEFT)
+        DashboardBtn(frame_sources, "+ ADD PDF", self.add_pdf_file, bg=COLORS['secondary'], fg='black', font=("Segoe UI", 8)).pack(side=tk.RIGHT)
+        
+        self.sources_txt = tk.Text(container, height=4, bg=COLORS['input_bg'], fg=COLORS['input_fg'], 
+                                   insertbackground=COLORS['accent'], relief="flat", font=("Segoe UI", 11))
+        self.sources_txt.pack(fill=tk.X, pady=(0, 20))
+        
+        existing_sources = data.get('sources', [])
+        if existing_sources:
+             self.sources_txt.insert("1.0", "\n".join(existing_sources))
+
         # Buttons
         btn_frame = tk.Frame(container, bg=COLORS['bg'])
         btn_frame.pack(fill=tk.X, pady=10)
         
         DashboardBtn(btn_frame, "CANCEL", self.win.destroy, bg=COLORS['card_bg'], fg=COLORS['text']).pack(side=tk.RIGHT, padx=10)
         DashboardBtn(btn_frame, "SAVE PODCAST", self.save_action, bg=COLORS['accent'], fg='#000000').pack(side=tk.RIGHT)
+
+    def add_pdf_file(self):
+        filename = filedialog.askopenfilename(title="Select PDF", filetypes=[("PDF Files", "*.pdf")])
+        if filename:
+            # Ensure target directory exists
+            pdf_dir = os.path.join(os.getcwd(), 'podcasts', 'pdfs')
+            if not os.path.exists(pdf_dir):
+                os.makedirs(pdf_dir)
+            
+            dest_name = os.path.basename(filename)
+            dest_path = os.path.join(pdf_dir, dest_name)
+            
+            # Copy file
+            try:
+                shutil.copy2(filename, dest_path)
+                # Insert relative path into sources
+                # Path relative to podcast html (podcasts/m2a/index.html) -> ../pdfs/file.pdf
+                rel_path = f"../pdfs/{dest_name}"
+                
+                current_text = self.sources_txt.get("1.0", tk.END).strip()
+                if current_text:
+                    self.sources_txt.insert(tk.END, f"\n{rel_path}")
+                else:
+                    self.sources_txt.insert(tk.END, rel_path)
+            except Exception as e:
+                messagebox.showerror("Error", f"Failed to copy PDF: {e}")
 
     def save_action(self):
         # Gather data
@@ -551,6 +602,9 @@ class EditWindow:
         clean_authors = [x.strip() for x in raw_authors if x.strip()]
         if not clean_authors: clean_authors = ["Anonym"]
         
+        raw_sources = self.sources_txt.get("1.0", tk.END).strip().split('\n')
+        clean_sources = [x.strip() for x in raw_sources if x.strip()]
+        
         if not new_title or not new_link:
              messagebox.showwarning("Missing Info", "Title and Link are required!")
              return
@@ -560,7 +614,7 @@ class EditWindow:
             'link': new_link,
             'details': new_details,
             'authors': clean_authors,
-            'sources': [] # Sources UI removed for cleaner look, usually empty or advanced usage
+            'sources': clean_sources
         }
         
         # Pass back to dashboard to handle file I/O
