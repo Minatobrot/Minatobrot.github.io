@@ -146,14 +146,14 @@ def generate_html_block(title, details, link, authors, sources):
     if is_moodle:
         # MOODLE LOGIC: Button instead of Player
         
-        # Ensure forcedownload=1
-        if "forcedownload=0" in link:
-            link = link.replace("forcedownload=0", "forcedownload=1")
+        # Ensure forcedownload=0
+        if "forcedownload=1" in link:
+            link = link.replace("forcedownload=1", "forcedownload=0")
         elif "forcedownload=" not in link:
              if "?" in link:
-                 link += "&forcedownload=1"
+                 link += "&forcedownload=0"
              else:
-                 link += "?forcedownload=1"
+                 link += "?forcedownload=0"
         
         # Generate Button HTML
         content_block = f"""<div class="moodle-container">
