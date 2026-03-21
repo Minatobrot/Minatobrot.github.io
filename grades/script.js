@@ -2,8 +2,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (!targetId || targetId === '#') {
+                return;
+            }
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) {
+                return;
+            }
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
+            targetElement.scrollIntoView({
                 behavior: 'smooth'
             });
         });
@@ -40,21 +48,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (aboutLink) {
         aboutLink.addEventListener('click', (e) => {
             e.preventDefault();
-            alert('About Panum:\n\nPanum ist ein unabhängiges Projekt, um den Schulalltag zu erleichtern. Es steht in keiner Verbindung zu schulNetz.\n\nEntwickelt von Minoshek Kishokumar.');
+            alert('About Panum:\n\nPanum is an independent project made to improve the school workflow. It is not affiliated with schulNetz.\n\nDeveloped by Minoshek Kishokumar.');
         });
     }
 
     if (datenschutzLink) {
         datenschutzLink.addEventListener('click', (e) => {
             e.preventDefault();
-            alert('Datenschutz:\n\nPanum speichert KEINE Daten auf externen Servern. Alle Daten (Noten, Einstellungen) bleiben lokal in deinem Browser (LocalStorage/SyncStorage). Wir tracken dich nicht und sammeln keine persönlichen Informationen.');
+            alert('Privacy:\n\nPanum does NOT store any data on external servers. All data (grades and settings) stays local in your browser (LocalStorage/SyncStorage). No tracking and no personal data collection.');
         });
     }
 
     if (impressumLink) {
         impressumLink.addEventListener('click', (e) => {
             e.preventDefault();
-            alert('Impressum:\n\nMinoshek Kishokumar\n[Adresse auf Anfrage]\nKontakt: Minoshekk@gmail.com\n\nDies ist ein privates, nicht-kommerzielles Projekt.');
+            alert('Imprint:\n\nMinoshek Kishokumar\n[Address on request]\nContact: Minoshekk@gmail.com\n\nThis is a private, non-commercial project.');
         });
     }
 
