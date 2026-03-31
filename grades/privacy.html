@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutz — Panum Grades</title>
+    <meta name="description" content="Datenschutzrichtlinie für Panum Grades. Alle Daten bleiben lokal auf deinem Gerät.">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <meta name="theme-color" content="#0a0f1a">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header id="navbar">
+        <nav class="container nav-bar">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-icon">🎓</span> Panum Grades
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Funktionen</a>
+                <a href="index.html#download">Download</a>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <a href="index.html#download" class="btn btn-primary btn-sm">Kostenlos installieren</a>
+            </div>
+            <button class="nav-mobile-toggle" aria-label="Menü umschalten">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="subpage-content">
+        <div class="container">
+            <a href="index.html" class="subpage-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Zurück zur Startseite
+            </a>
+
+            <h1>Datenschutzrichtlinie</h1>
+            <p class="subpage-lead">Kurzfassung: Wir sammeln keine Daten. Keine. Überhaupt keine. Hier ist die ausführliche Version.</p>
+
+            <div class="card-block">
+                <h3>Zusammenfassung in einem Satz</h3>
+                <p>Panum Grades speichert alle Daten lokal auf deinem Gerät im eingebauten Speicher deines Browsers. Es werden nie Daten an irgendeinen Server übertragen.</p>
+            </div>
+
+            <h2>Auf welche Daten greift Panum Grades zu?</h2>
+            <p>Wenn du deine schulNetz-Notenseite besuchst, liest die Erweiterung die Notendaten, die bereits in deinem Browser sichtbar sind (das HTML/DOM). Das sind die gleichen Daten, die du mit eigenen Augen auf dem Bildschirm sehen kannst.</p>
+            <p>Diese Daten werden dann verwendet, um Berechnungen (Durchschnitte, Pluspunkte, Simulationen) lokal in deinem Browser durchzuführen.</p>
+
+            <h2>Wo werden Daten gespeichert?</h2>
+            <p>Alle Daten werden gespeichert mit:</p>
+            <ul>
+                <li><strong>Browser localStorage</strong> — nur auf der schulNetz-Domain verfügbar, beschränkt auf dein Browser-Profil.</li>
+                <li><strong>Browser Extension Storage</strong> (chrome.storage.local / browser.storage.local) — lokal in deinen Browser-Extension-Daten gespeichert.</li>
+            </ul>
+            <p>Keine dieser Speichermethoden beinhaltet einen externen Server. Beide werden gelöscht, wenn du die Erweiterung deinstallierst oder deine Browserdaten löschst.</p>
+
+            <h2>Welche Daten werden NICHT gesammelt?</h2>
+            <ul>
+                <li>Keine persönlichen Informationen (Name, E-Mail, Schule, Klasse)</li>
+                <li>Keine Nutzungsanalysen oder Telemetrie</li>
+                <li>Keine Cookies (wir setzen keine)</li>
+                <li>Keine IP-Adressen</li>
+                <li>Kein Browserverlauf</li>
+                <li>Keine Daten, die an irgendeinen Server, API oder Drittanbieter übertragen werden</li>
+            </ul>
+
+            <h2>Macht die Erweiterung Netzwerkanfragen?</h2>
+            <p>Nein. Panum Grades macht keine HTTP-Requests, Fetch-Aufrufe oder WebSocket-Verbindungen. Die Erweiterung hat kein Backend, keinen Server und keine API. Alles läuft offline in deinem Browser.</p>
+
+            <h2>Berechtigungen erklärt</h2>
+            <p>Die Erweiterung fordert folgende Browser-Berechtigungen an:</p>
+            <ul>
+                <li><strong>storage</strong> — Um deine Einstellungen (z.B. welche Buttons aktiviert sind, Dark-Mode-Präferenz) lokal auf deinem Gerät zu speichern.</li>
+                <li><strong>Host-Berechtigung für schul-netz.com</strong> — Um den Notenrechner und die Tools in die schulNetz-Seite einzufügen. Die Erweiterung aktiviert sich nur auf schul-netz.com.</li>
+            </ul>
+
+            <h2>Drittanbieterdienste</h2>
+            <p>Panum Grades integriert keine Drittanbieter-Analyse-, Werbe- oder Tracking-Dienste.</p>
+
+            <h2>Datenschutz für Minderjährige</h2>
+            <p>Da Panum Grades keine Daten sammelt, gibt es keine besonderen Überlegungen für Nutzer jeglichen Alters.</p>
+
+            <h2>Quellcode</h2>
+            <p>Die Erweiterung ist quelloffen. Du kannst jede Aussage auf dieser Seite selbst überprüfen, indem du den Code auf <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer">GitHub</a> liest.</p>
+
+            <h2>Änderungen an dieser Richtlinie</h2>
+            <p>Falls diese Richtlinie aktualisiert wird, werden die Änderungen auf dieser Seite ersichtlich. Da wir grundsätzlich keine Daten sammeln, sind wesentliche Änderungen unwahrscheinlich.</p>
+
+            <h2>Kontakt</h2>
+            <p>Bei Fragen zu dieser Datenschutzrichtlinie kannst du uns über die <a href="contact.html">Kontaktseite</a> erreichen oder eine E-Mail an <strong>minoshek@gmail.com</strong> senden.</p>
+
+            <p><em>Zuletzt aktualisiert: März 2026</em></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">🎓 Panum Grades</span>
+                <p class="footer-tagline">Macht schulNetz erträglich seit 2024.</p>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-col">
+                    <h4>Produkt</h4>
+                    <a href="index.html#features">Funktionen</a>
+                    <a href="index.html#download">Download</a>
+                    <a href="index.html#faq">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Rechtliches</h4>
+                    <a href="about.html">Über uns</a>
+                    <a href="privacy.html">Datenschutz</a>
+                    <a href="imprint.html">Impressum</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <a href="contact.html">Kontakt</a>
+                    <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Minoshek Kishokumar. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

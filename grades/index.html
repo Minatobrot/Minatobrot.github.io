@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panum Grades - schulNetz Upgrade</title>
-    <meta name="description" content="Panum Grades ist eine inoffizielle Browser-Erweiterung fuer schulNetz. Alles bleibt lokal im Browser.">
-    <meta property="og:title" content="Panum Grades - schulNetz Upgrade">
-    <meta property="og:description" content="Inoffizielle Browser-Erweiterung fuer schulNetz mit Notenrechner, Durchschnitt und Zielnoten.">
-    <link rel="stylesheet" href="style.css">
+    <title>Panum Grades — schulNetz endlich sinnvoll nutzen</title>
+    <meta name="description" content="Gratis Browser-Erweiterung für schulNetz: Notenrechner, Durchschnitte, Pluspunkte, Dark Mode und mehr. 100% lokal, 100% kostenlos, 100% Open Source.">
+    <meta property="og:title" content="Panum Grades — schulNetz endlich sinnvoll nutzen">
+    <meta property="og:description" content="Gratis Browser-Erweiterung: Notenrechner, Durchschnitte, Pluspunkte, Dark Mode für schulNetz. Alle Daten bleiben auf deinem Gerät.">
+    <meta property="og:type" content="website">
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png">
@@ -17,161 +17,440 @@
     <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
-    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#0a0f1a">
     <meta name="msapplication-TileImage" content="favicon/mstile-150x150.png">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#0a0f1a">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Panum Grades</div>
+
+    <!-- ===== NAVBAR ===== -->
+    <header id="navbar">
+        <nav class="container nav-bar">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-icon">🎓</span> Panum Grades
+            </a>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#how-it-works">How it works</a>
-                <a href="#download" class="btn-primary">Download</a>
-                <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer" class="btn-github">View source code on GitHub</a>
+                <a href="#features">Funktionen</a>
+                <a href="#how-it-works">So funktioniert's</a>
+                <a href="#trust">Vertrauen</a>
+                <a href="#faq">FAQ</a>
             </div>
+            <div class="nav-actions">
+                <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-sm">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a12 12 0 0 0-3.79 23.38c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.41-4.04-1.41a3.18 3.18 0 0 0-1.33-1.75c-1.09-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.56 2.56 0 0 1 .76-1.6c-2.67-.3-5.48-1.34-5.48-5.94a4.65 4.65 0 0 1 1.24-3.22 4.32 4.32 0 0 1 .12-3.18s1.01-.32 3.3 1.23a11.42 11.42 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23a4.31 4.31 0 0 1 .12 3.18 4.64 4.64 0 0 1 1.24 3.22c0 4.61-2.81 5.63-5.49 5.93a2.88 2.88 0 0 1 .82 2.24v3.32c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+                    GitHub
+                </a>
+                <a href="#download" class="btn btn-primary btn-sm">Kostenlos installieren</a>
+            </div>
+            <button class="nav-mobile-toggle" aria-label="Menü umschalten">
+                <span></span><span></span><span></span>
+            </button>
         </nav>
     </header>
 
     <main>
+
+        <!-- ===== HERO ===== -->
         <section class="hero">
-            <div class="container">
-                <h1>Panum Grades <span class="highlight">for schulNetz</span></h1>
-                <p class="subtitle">
-                    An unofficial browser extension for schulNetz.<br>
-                    Calculate your average, simulate target grades, and keep bonus points in view.
-                </p>
-                <div class="cta-group">
-                    <a href="#download" class="btn-primary">Download Panum Grades</a>
-                    <a href="#features" class="btn-secondary">Explore features</a>
-                    <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer" class="btn-github">View source code on GitHub</a>
+            <div class="hero-glow"></div>
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <div class="hero-badge">100% Gratis &middot; 100% Lokal &middot; Open Source</div>
+                    <h1>schulNetz, aber <span class="gradient-text">endlich brauchbar.</span></h1>
+                    <p class="hero-subtitle">
+                        Panum Grades fügt einen Notenrechner, Live-Durchschnitte, Pluspunkte, Dark Mode, Achievements und mehr direkt in deine schulNetz-Seite ein. Keine Konten, keine Server, keine Kosten.
+                    </p>
+                    <div class="hero-ctas">
+                        <a href="#download" class="btn btn-primary btn-lg">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Kostenlos installieren
+                        </a>
+                        <a href="#features" class="btn btn-outline btn-lg">Was kann es?</a>
+                    </div>
+                    <div class="hero-trust-row">
+                        <div class="trust-chip">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Keine Daten verlassen dein Gerät
+                        </div>
+                        <div class="trust-chip">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+                            Funktioniert mit Chrome, Edge &amp; Firefox
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <img src="images/hero-screenshot.png" alt="Panum Grades läuft auf schulNetz mit Dark Mode" class="hero-screenshot" loading="eager">
                 </div>
             </div>
         </section>
 
-        <section id="features" class="features">
+        <!-- ===== SOCIAL PROOF BAR ===== -->
+        <section class="proof-bar">
+            <div class="container proof-bar-inner">
+                <div class="proof-item">
+                    <strong>7+</strong>
+                    <span>Tools integriert</span>
+                </div>
+                <div class="proof-divider"></div>
+                <div class="proof-item">
+                    <strong>0 CHF</strong>
+                    <span>Für immer gratis</span>
+                </div>
+                <div class="proof-divider"></div>
+                <div class="proof-item">
+                    <strong>0 Bytes</strong>
+                    <span>An Server gesendet</span>
+                </div>
+                <div class="proof-divider"></div>
+                <div class="proof-item">
+                    <strong>3</strong>
+                    <span>Browser unterstützt</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES ===== -->
+        <section id="features" class="features-section">
             <div class="container">
-                <h2>Features</h2>
-                <div class="feature-grid">
-                    <div class="feature-card">
-                        <div class="icon">🧮</div>
-                        <h3>Grade calculator</h3>
-                        <p>Test new grades and instantly see how your average changes.</p>
+                <div class="section-header">
+                    <span class="section-tag">Funktionen</span>
+                    <h2>Alles, was du dir von schulNetz gewünscht hast.</h2>
+                    <p class="section-subtitle">Einmal installieren. Alle Tools. Direkt in deiner Notenseite.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card feature-card--highlight">
+                        <div class="feature-icon feature-icon--blue">
+                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="4" fill="#1976d2"/><rect x="7" y="7" width="14" height="4" rx="1.5" fill="#fff"/><rect x="7" y="13" width="4" height="4" rx="1.5" fill="#fff"/><rect x="12" y="13" width="4" height="4" rx="1.5" fill="#fff"/><rect x="17" y="13" width="4" height="4" rx="1.5" fill="#fff"/><rect x="7" y="18" width="4" height="4" rx="1.5" fill="#fff"/><rect x="12" y="18" width="4" height="4" rx="1.5" fill="#fff"/></svg>
+                        </div>
+                        <h3>Notenrechner</h3>
+                        <p>Füge eine hypothetische Note hinzu und sieh sofort, wie sich dein Durchschnitt verändert. Plane voraus vor der nächsten Prüfung.</p>
+                        <img src="images/feature-calculator.png" alt="Notenrechner-Panel in Aktion" class="feature-img" loading="lazy">
                     </div>
+
                     <div class="feature-card">
-                        <div class="icon">📈</div>
-                        <h3>Average</h3>
-                        <p>Automatic real-time calculation of your current grade average.</p>
+                        <div class="feature-icon feature-icon--green">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#388e3c" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        </div>
+                        <h3>Pluspunkte-Übersicht</h3>
+                        <p>Sieh alle Plus- und Minuspunkte pro Fach auf einen Blick. Fächer ausblenden oder zusammenführen nach Wunsch.</p>
                     </div>
+
                     <div class="feature-card">
-                        <div class="icon">🎯</div>
-                        <h3>Target grades</h3>
-                        <p>Find out which grade you need to reach your desired average.</p>
+                        <div class="feature-icon feature-icon--orange">
+                            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="4" fill="#b36a00"/><path d="M9 19l1.5-5.5L18 6.99a1.4 1.4 0 012 2l-6.51 7.5L9 19z" fill="#fff"/><rect x="7" y="21" width="14" height="2" rx="1" fill="#fff"/></svg>
+                        </div>
+                        <h3>Noten-Simulator</h3>
+                        <p>Probiere jede beliebige Notenkombination aus und sieh das Ergebnis, bevor es passiert. «Was wäre, wenn ich eine 5 in Mathe bekomme?»</p>
                     </div>
+
                     <div class="feature-card">
-                        <div class="icon">⭐</div>
-                        <h3>Bonus points</h3>
-                        <p>Track all collected bonus points in one clean overview.</p>
+                        <div class="feature-icon feature-icon--red">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff5722" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        </div>
+                        <h3>Verbesserungsanalyse</h3>
+                        <p>Sieh, welche Fächer das grösste Verbesserungspotenzial haben — und wo Risiken lauern.</p>
                     </div>
+
                     <div class="feature-card">
-                        <div class="icon">🏆</div>
-                        <h3>Gamification</h3>
-                        <p>Unlock achievements for good results and stay motivated.</p>
+                        <div class="feature-icon feature-icon--purple">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7c4dff" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        </div>
+                        <h3>Achievements &amp; Gamification</h3>
+                        <p>Schalte Abzeichen für gute Ergebnisse, Serien und Fachmeisterschaft frei. Macht Noten ein bisschen spassiger.</p>
                     </div>
+
                     <div class="feature-card">
-                        <div class="icon">🎨</div>
-                        <h3>Customizable</h3>
-                        <p>Enable or disable features based on your own needs.</p>
+                        <div class="feature-icon feature-icon--cyan">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00bcd4" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                        </div>
+                        <h3>Dark Mode</h3>
+                        <p>Ein vollständiges dunkles Design für schulNetz. Angenehm für die Augen, besonders bei nächtlichen Hausaufgaben.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon feature-icon--gray">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#78909c" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23" stroke="#78909c" stroke-width="2"/></svg>
+                        </div>
+                        <h3>Inkognito-Modus</h3>
+                        <p>Verstecke deinen Namen und persönliche Infos mit einem PIN. Perfekt, wenn jemand auf deinen Bildschirm schaut.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon feature-icon--teal">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#009688" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                        </div>
+                        <h3>Volle Popup-Steuerung</h3>
+                        <p>Schalte jede einzelne Funktion im Extension-Popup ein oder aus. Behalte nur, was du wirklich brauchst.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="how-it-works" class="how-it-works">
+        <!-- ===== SHOWCASE / BEFORE-AFTER ===== -->
+        <section class="showcase-section">
             <div class="container">
-                <h2>How it works</h2>
-                <div class="steps">
-                    <div class="step">
+                <div class="section-header">
+                    <span class="section-tag">Vergleich</span>
+                    <h2>schulNetz ohne vs. mit Panum Grades</h2>
+                </div>
+                <div class="showcase-grid">
+                    <div class="showcase-card showcase-card--before">
+                        <div class="showcase-label">Ohne Panum</div>
+                        <img src="images/before-screenshot.png" alt="schulNetz ohne Panum Grades" class="showcase-img" loading="lazy">
+                        <ul class="showcase-list showcase-list--bad">
+                            <li>Einfache Notentabelle, keine Analyse</li>
+                            <li>Keine Durchschnittsberechnung</li>
+                            <li>Kein Dark Mode</li>
+                            <li>Keine Möglichkeit, zukünftige Noten zu simulieren</li>
+                        </ul>
+                    </div>
+                    <div class="showcase-card showcase-card--after">
+                        <div class="showcase-label">Mit Panum Grades</div>
+                        <img src="images/hero-screenshot.png" alt="schulNetz mit Panum Grades" class="showcase-img" loading="lazy">
+                        <ul class="showcase-list showcase-list--good">
+                            <li>Rechner, Simulator, Pluspunkte griffbereit</li>
+                            <li>Live-Durchschnitt &amp; Verbesserungstipps</li>
+                            <li>Schöner Dark Mode</li>
+                            <li>Achievements für extra Motivation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DARK MODE SHOWCASE ===== -->
+        <section class="darkmode-showcase-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Dark Mode</span>
+                    <h2>Schluss mit blendend weissem schulNetz.</h2>
+                    <p class="section-subtitle">Ein vollständiges dunkles Design — nicht nur ein Filter, sondern ein komplett neues Farbschema für schulNetz.</p>
+                </div>
+                <div class="showcase-grid">
+                    <div class="showcase-card showcase-card--before">
+                        <div class="showcase-label">Originales schulNetz</div>
+                        <img src="images/before-screenshot.png" alt="schulNetz im originalen hellen Design" class="showcase-img" loading="lazy">
+                    </div>
+                    <div class="showcase-card showcase-card--after">
+                        <div class="showcase-label">Mit Dark Mode</div>
+                        <img src="images/hero-screenshot.png" alt="schulNetz mit Panum Grades Dark Mode" class="showcase-img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <section id="how-it-works" class="steps-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Installation</span>
+                    <h2>In 30 Sekunden bereit.</h2>
+                    <p class="section-subtitle">Keine Anmeldung. Keine Konfiguration. Einfach installieren und loslegen.</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
                         <div class="step-number">1</div>
-                        <h3>Install</h3>
-                        <p>Add Panum Grades to your browser as an extension.</p>
+                        <h3>Erweiterung installieren</h3>
+                        <p>Klicke auf «Installieren» für Chrome, Edge oder Firefox. Ein Klick genügt.</p>
                     </div>
-                    <div class="step">
+                    <div class="step-connector">
+                        <svg width="40" height="24" viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><path d="M0 12h36M30 6l6 6-6 6"/></svg>
+                    </div>
+                    <div class="step-card">
                         <div class="step-number">2</div>
-                        <h3>Log in</h3>
-                        <p>Open schulNetz as usual. Panum starts automatically.</p>
+                        <h3>schulNetz öffnen</h3>
+                        <p>Melde dich wie gewohnt bei schulNetz an. Panum aktiviert sich automatisch.</p>
                     </div>
-                    <div class="step">
+                    <div class="step-connector">
+                        <svg width="40" height="24" viewBox="0 0 40 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".3"><path d="M0 12h36M30 6l6 6-6 6"/></svg>
+                    </div>
+                    <div class="step-card">
                         <div class="step-number">3</div>
-                        <h3>Use it</h3>
-                        <p>Use calculator, targets, and bonus points directly in your overview.</p>
+                        <h3>Fertig. Tools nutzen.</h3>
+                        <p>Schwebende Buttons erscheinen auf deiner Notenseite. Klicke auf ein Tool, um es zu öffnen.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="faq" class="faq">
+        <!-- ===== TRUST SECTION ===== -->
+        <section id="trust" class="trust-section">
             <div class="container">
-                <h2>Frequently asked questions</h2>
-                <div class="faq-grid">
-                    <div class="faq-item">
-                        <h3>Is it safe?</h3>
-                        <p>Yes. Data is stored locally in your browser and never leaves your device.</p>
+                <div class="section-header">
+                    <span class="section-tag">Vertrauen &amp; Transparenz</span>
+                    <h2>Deine Daten. Dein Gerät. Punkt.</h2>
+                    <p class="section-subtitle">Wir wollen deine Daten nicht. Wir können sie buchstäblich nicht einsehen.</p>
+                </div>
+                <div class="trust-grid">
+                    <div class="trust-card">
+                        <div class="trust-card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>100% Lokale Speicherung</h3>
+                        <p>Alle Noten, Einstellungen und Berechnungen werden im lokalen Speicher deines Browsers gespeichert. Es gibt keinen Server, keine Datenbank, keine Cloud. Nichts verlässt jemals deinen Computer.</p>
                     </div>
-                    <div class="faq-item">
-                        <h3>Does it cost anything?</h3>
-                        <p>No. Panum Grades is completely free.</p>
+                    <div class="trust-card">
+                        <div class="trust-card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2196f3" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        </div>
+                        <h3>Kein Tracking</h3>
+                        <p>Keine Analytik. Keine Cookies. Keine Telemetrie. Keine Benutzerkonten. Wir wissen nicht, wer du bist — und wollen es auch nicht.</p>
                     </div>
-                    <div class="faq-item">
-                        <h3>Does it work on mobile?</h3>
-                        <p>Currently it is a desktop extension for Chrome, Edge, and Firefox.</p>
+                    <div class="trust-card">
+                        <div class="trust-card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff9800" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h3>Für immer gratis</h3>
+                        <p>Kein Premium-Abo. Keine Werbung. Keine «Gratis-Testphase». Panum Grades ist komplett kostenlos. War es immer, wird es immer sein.</p>
+                    </div>
+                    <div class="trust-card">
+                        <div class="trust-card-icon">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ab47bc" stroke-width="2"><path d="M16 18l2-2-2-2M8 6L6 8l2 2"/><path d="M14.5 4l-5 16"/></svg>
+                        </div>
+                        <h3>Open Source</h3>
+                        <p>Jede Zeile Code ist öffentlich auf GitHub. Du kannst den Code lesen, forken, prüfen. Keine versteckten Überraschungen.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="download" class="download">
+        <!-- ===== DISCLAIMER ===== -->
+        <section class="disclaimer-section">
             <div class="container">
-                <h2>Ready for Panum Grades?</h2>
-                <p>Get the extension for your browser.</p>
-                <div class="store-buttons">
-                    <a href="https://chromewebstore.google.com/detail/schulnetz-plus/dhpaiadnjbppklggkdajmlebcfaiaobk" target="_blank" class="store-btn chrome">
-                        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2 .9 2 2v.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        Chrome / Edge
-                    </a>
-                    <a href="https://addons.mozilla.org/en-US/firefox/addon/schulnetz-plus/" target="_blank" class="store-btn firefox">
-                        <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2 .9 2 2v.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-                        Firefox
-                    </a>
-                    <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer" class="store-btn github">
-                        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.38c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.41-4.04-1.41a3.18 3.18 0 0 0-1.33-1.75c-1.09-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.56 2.56 0 0 1 .76-1.6c-2.67-.3-5.48-1.34-5.48-5.94a4.65 4.65 0 0 1 1.24-3.22 4.32 4.32 0 0 1 .12-3.18s1.01-.32 3.3 1.23a11.42 11.42 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23a4.31 4.31 0 0 1 .12 3.18 4.64 4.64 0 0 1 1.24 3.22c0 4.61-2.81 5.63-5.49 5.93a2.88 2.88 0 0 1 .82 2.24v3.32c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
-                        View source code on GitHub
-                    </a>
-                </div>
-                <div class="tech-note">
-                    <p><strong>Technical note:</strong> Only DOM/HTML is read. No server requests, no cookies, no personal data - everything stays local.</p>
-                    <p class="disclaimer"><em>Disclaimer: Panum is independent and not affiliated with schulNetz or its operators.</em></p>
+                <div class="disclaimer-banner">
+                    <div class="disclaimer-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <div class="disclaimer-content">
+                        <h3>Wichtiger Hinweis</h3>
+                        <div class="disclaimer-item">
+                            <strong>Keine offizielle Verbindung:</strong> Es besteht keine offizielle Zusammenarbeit oder Partnerschaft mit den Betreibern von schulNetz (Centerboard AG). Diese Erweiterung ist ein unabhängiges Projekt.
+                        </div>
+                        <div class="disclaimer-item">
+                            <strong>Nutzung auf eigene Gefahr:</strong> Das Add-on wird «wie besehen» (as-is) und ohne jegliche Gewährleistung bereitgestellt. Für die Richtigkeit der angezeigten Daten — insbesondere Noten und Termine — sind weiterhin ausschliesslich die offiziellen Anzeigen im originalen schulNetz-System massgeblich.
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
+        <!-- ===== FAQ ===== -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">FAQ</span>
+                    <h2>Häufig gestellte Fragen</h2>
+                </div>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Ist Panum Grades wirklich kostenlos?</summary>
+                        <div class="faq-answer">Ja, komplett. Es gibt keine versteckten Kosten, keine Premium-Funktionen, keine Werbung. Alles ist von Anfang an enthalten.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Sind meine Daten sicher? Wo werden sie gespeichert?</summary>
+                        <div class="faq-answer">Deine Daten verlassen nie dein Gerät. Alles wird im lokalen Speicher deines Browsers (localStorage und Browser-Extension-Storage) gespeichert. Es gibt keinen Server, keine Datenbank, keine Cloud. Wir können physisch nicht auf deine Daten zugreifen.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Welche Browser werden unterstützt?</summary>
+                        <div class="faq-answer">Google Chrome, Microsoft Edge und Mozilla Firefox. Da Edge auf Chromium basiert, funktioniert die Chrome-Web-Store-Version sowohl für Chrome als auch für Edge.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Funktioniert es auf dem Handy?</summary>
+                        <div class="faq-answer">Aktuell ist Panum Grades eine Desktop-Browser-Erweiterung. Mobile Browser-Erweiterungen sind eingeschränkt, aber Firefox auf Android kann Add-ons installieren, daher könnte es dort teilweise funktionieren.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Kann meine Schule sehen, dass ich es benutze?</summary>
+                        <div class="faq-answer">Nein. Panum Grades verändert nur, was du in deinem Browser siehst. Es sendet keine Daten an schulNetz oder anderswohin. Für die Server der Schule sieht dein Browser ganz normal aus.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Verändert es meine echten Noten?</summary>
+                        <div class="faq-answer">Absolut nicht. Panum Grades liest nur die Noten, die schulNetz dir bereits anzeigt. Der Rechner und Simulator sind rein visuelle Werkzeuge — es wird nichts an schulNetz zurückgeschrieben.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Ist es mit schulNetz verbunden?</summary>
+                        <div class="faq-answer">Nein. Panum Grades ist ein unabhängiges Projekt. Es ist nicht mit schulNetz, Centerboard AG oder irgendeiner Schule verbunden, endorsed oder affiliiert.</div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Wie deinstalliere ich es?</summary>
+                        <div class="faq-answer">Rechtsklick auf das Extension-Icon in der Browser-Toolbar und «Erweiterung entfernen» wählen (Chrome/Edge) oder unter Add-ons entfernen (Firefox). Alle lokalen Daten werden beim Entfernen der Erweiterung gelöscht.</div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DOWNLOAD ===== -->
+        <section id="download" class="download-section">
+            <div class="download-glow"></div>
+            <div class="container download-inner">
+                <h2>Hol dir Panum Grades jetzt.</h2>
+                <p class="download-subtitle">Gratis. Lokal. Kein Konto nötig. Wähle einfach deinen Browser.</p>
+                <div class="download-buttons">
+                    <a href="https://chromewebstore.google.com/detail/schulnetz-plus/dhpaiadnjbppklggkdajmlebcfaiaobk" target="_blank" rel="noopener noreferrer" class="download-btn download-btn--chrome">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4"/></svg>
+                        <div>
+                            <span class="download-btn-label">Installieren für</span>
+                            <span class="download-btn-browser">Chrome / Edge</span>
+                        </div>
+                    </a>
+                    <a href="https://addons.mozilla.org/en-US/firefox/addon/schulnetz-plus/" target="_blank" rel="noopener noreferrer" class="download-btn download-btn--firefox">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                        <div>
+                            <span class="download-btn-label">Installieren für</span>
+                            <span class="download-btn-browser">Firefox</span>
+                        </div>
+                    </a>
+                    <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer" class="download-btn download-btn--github">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.38c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.41-4.04-1.41a3.18 3.18 0 0 0-1.33-1.75c-1.09-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.56 2.56 0 0 1 .76-1.6c-2.67-.3-5.48-1.34-5.48-5.94a4.65 4.65 0 0 1 1.24-3.22 4.32 4.32 0 0 1 .12-3.18s1.01-.32 3.3 1.23a11.42 11.42 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23a4.31 4.31 0 0 1 .12 3.18 4.64 4.64 0 0 1 1.24 3.22c0 4.61-2.81 5.63-5.49 5.93a2.88 2.88 0 0 1 .82 2.24v3.32c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+                        <div>
+                            <span class="download-btn-label">Ansehen auf</span>
+                            <span class="download-btn-browser">GitHub</span>
+                        </div>
+                    </a>
+                </div>
+                <p class="download-note">Panum Grades ist unabhängig und nicht mit schulNetz oder dessen Betreibern verbunden.</p>
+            </div>
+        </section>
+
     </main>
 
+    <!-- ===== FOOTER ===== -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Minoshek Kishokumar. Alle Rechte vorbehalten.</p>
-            <div class="footer-links">
-                <a href="#" id="link-about">About</a>
-                <a href="#" id="link-datenschutz">Privacy</a>
-                <a href="#" id="link-impressum">Imprint</a>
-                <a href="#" id="link-kontakt">Contact</a>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">🎓 Panum Grades</span>
+                <p class="footer-tagline">Macht schulNetz erträglich seit 2024.</p>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-col">
+                    <h4>Produkt</h4>
+                    <a href="#features">Funktionen</a>
+                    <a href="#download">Download</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Rechtliches</h4>
+                    <a href="about.html">Über uns</a>
+                    <a href="privacy.html">Datenschutz</a>
+                    <a href="imprint.html">Impressum</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <a href="contact.html">Kontakt</a>
+                    <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Minoshek Kishokumar. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
+
 </body>
 </html>

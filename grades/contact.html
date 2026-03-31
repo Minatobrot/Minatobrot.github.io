@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt — Panum Grades</title>
+    <meta name="description" content="Kontaktiere das Panum-Grades-Team für Feedback, Bugs oder Fragen.">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <meta name="theme-color" content="#0a0f1a">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header id="navbar">
+        <nav class="container nav-bar">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-logo-icon">🎓</span> Panum Grades
+            </a>
+            <div class="nav-links">
+                <a href="index.html#features">Funktionen</a>
+                <a href="index.html#download">Download</a>
+                <a href="index.html#faq">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <a href="index.html#download" class="btn btn-primary btn-sm">Kostenlos installieren</a>
+            </div>
+            <button class="nav-mobile-toggle" aria-label="Menü umschalten">
+                <span></span><span></span><span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="subpage-content">
+        <div class="container">
+            <a href="index.html" class="subpage-back">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Zurück zur Startseite
+            </a>
+
+            <h1>Kontakt</h1>
+            <p class="subpage-lead">Einen Bug gefunden? Einen Vorschlag? Einfach Hallo sagen? Wir freuen uns von dir zu hören.</p>
+
+            <div class="card-block">
+                <h3>Schnelllinks</h3>
+                <ul>
+                    <li><strong>Fehlerberichte &amp; Feature-Anfragen:</strong> <a href="https://github.com/Minatobrot/Panum-Grades/issues" target="_blank" rel="noopener noreferrer">GitHub Issue erstellen</a> — das ist der schnellste Weg für eine Antwort.</li>
+                    <li><strong>Allgemeine Fragen:</strong> E-Mail an <a href="mailto:minoshek@gmail.com">minoshek@gmail.com</a></li>
+                    <li><strong>Quellcode &amp; Beiträge:</strong> <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+                </ul>
+            </div>
+
+            <h2>Nachricht senden</h2>
+            <p>Du kannst auch das untenstehende Formular nutzen, um direkt eine Nachricht zu senden. Es öffnet dein E-Mail-Programm.</p>
+
+            <form class="contact-form" action="mailto:minoshek@gmail.com" method="get" enctype="text/plain">
+                <div class="form-group">
+                    <label for="contact-subject">Betreff</label>
+                    <select id="contact-subject" name="subject">
+                        <option value="Fehlerbericht">Fehlerbericht</option>
+                        <option value="Feature-Anfrage">Feature-Anfrage</option>
+                        <option value="Allgemeine Frage">Allgemeine Frage</option>
+                        <option value="Sonstiges">Sonstiges</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="contact-body">Deine Nachricht</label>
+                    <textarea id="contact-body" name="body" placeholder="Beschreibe den Fehler, die Feature-Idee oder deine Frage..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Im E-Mail-Programm öffnen
+                </button>
+            </form>
+
+            <h2 style="margin-top: 3rem;">Lieber GitHub?</h2>
+            <p>Für Fehlerberichte und Feature-Anfragen sind GitHub Issues der beste Weg. Die Community kann dort abstimmen, diskutieren und den Fortschritt verfolgen.</p>
+            <a href="https://github.com/Minatobrot/Panum-Grades/issues/new" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-lg" style="margin-top: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.79 23.38c.6.11.82-.26.82-.58v-2.04c-3.34.73-4.04-1.41-4.04-1.41a3.18 3.18 0 0 0-1.33-1.75c-1.09-.74.08-.73.08-.73a2.52 2.52 0 0 1 1.84 1.24 2.56 2.56 0 0 0 3.5 1 2.56 2.56 0 0 1 .76-1.6c-2.67-.3-5.48-1.34-5.48-5.94a4.65 4.65 0 0 1 1.24-3.22 4.32 4.32 0 0 1 .12-3.18s1.01-.32 3.3 1.23a11.42 11.42 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23a4.31 4.31 0 0 1 .12 3.18 4.64 4.64 0 0 1 1.24 3.22c0 4.61-2.81 5.63-5.49 5.93a2.88 2.88 0 0 1 .82 2.24v3.32c0 .32.21.7.83.58A12 12 0 0 0 12 .5Z"/></svg>
+                GitHub Issue erstellen
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="footer-logo">🎓 Panum Grades</span>
+                <p class="footer-tagline">Macht schulNetz erträglich seit 2024.</p>
+            </div>
+            <div class="footer-nav">
+                <div class="footer-col">
+                    <h4>Produkt</h4>
+                    <a href="index.html#features">Funktionen</a>
+                    <a href="index.html#download">Download</a>
+                    <a href="index.html#faq">FAQ</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Rechtliches</h4>
+                    <a href="about.html">Über uns</a>
+                    <a href="privacy.html">Datenschutz</a>
+                    <a href="imprint.html">Impressum</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontakt</h4>
+                    <a href="contact.html">Kontakt</a>
+                    <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Minoshek Kishokumar. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
