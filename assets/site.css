@@ -1,5 +1,5 @@
-/* panumic.com — shared notebook look.
-   Light theme is a graph-paper exercise book, dark theme is a chalkboard. */
+/* panumic.com — shared look. Lavender on pale paper; deep aubergine in dark mode.
+   --red is the accent ("pen") colour, kept under that name for the other stylesheets. */
 
 @font-face {
     font-family: "Archivo";
@@ -29,42 +29,41 @@
 }
 
 :root {
-    --paper: #fbfcfb;
+    --paper: #f7f4fc;
     --surface: #ffffff;
-    --grid: #e2eaf1;
-    --ink: #1c2f7a;
-    --text: #20242c;
-    --muted: #5a6472;
-    --rule: #c3cedb;
-    --red: #cf2a27;
-    --margin: #eaa9a7;
-    --hilite: #ffe45c;
+    --ink: #3d2f73;
+    --text: #25212f;
+    --muted: #675f7e;
+    --rule: #dcd3ef;
+    --red: #7c5cd0;
+    --margin: #cbbcf0;
+    --hilite: #e4d9fc;
+    --danger: #b3261e;
     --on-ink: #ffffff;
 
     --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
     --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
     --font-hand: "Caveat", "Segoe Print", "Bradley Hand", cursive;
 
-    --cell: 26px;
     --sheet-w: 1120px;
-    --edge: max(14px, calc(50vw - var(--sheet-w) / 2));
-    --gutter: clamp(22px, 3.2vw, 40px);
+    --edge: max(20px, calc(50vw - var(--sheet-w) / 2));
+    --gutter: 0px;
     color-scheme: light dark;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --paper: #1c2924;
-        --surface: #24332d;
-        --grid: rgba(255, 255, 255, 0.045);
-        --ink: #f4f2e8;
-        --text: #e3e5db;
-        --muted: #a5b1a8;
-        --rule: #3d4d45;
-        --red: #ff9685;
-        --margin: rgba(255, 150, 133, 0.45);
-        --hilite: rgba(244, 214, 92, 0.3);
-        --on-ink: #1c2924;
+        --paper: #1e1a2b;
+        --surface: #282339;
+        --ink: #e9e2fd;
+        --text: #e2deec;
+        --muted: #aaa2c2;
+        --rule: #3c3554;
+        --red: #bba6f5;
+        --margin: rgba(187, 166, 245, 0.4);
+        --hilite: rgba(187, 166, 245, 0.24);
+        --danger: #ff8f85;
+        --on-ink: #1e1a2b;
     }
 }
 
@@ -84,24 +83,8 @@ body {
     font: 400 1.125rem/1.55 var(--font-body);
     color: var(--text);
     background-color: var(--paper);
-    background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size: var(--cell) var(--cell);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-}
-
-/* the red margin line of the exercise book */
-body::before {
-    content: "";
-    position: fixed;
-    inset-block: 0;
-    left: var(--edge);
-    width: 1.5px;
-    background: var(--margin);
-    pointer-events: none;
-    z-index: 0;
 }
 
 ::selection { background: var(--hilite); color: inherit; }

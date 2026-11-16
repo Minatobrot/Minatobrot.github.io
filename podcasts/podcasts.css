@@ -174,7 +174,7 @@
 .is-playing .player-eq i:nth-child(3) { animation-duration: 0.75s; animation-delay: -0.5s; }
 @keyframes eq { from { transform: scaleY(0.2); } to { transform: scaleY(1); } }
 
-.player-error { grid-area: media; margin: 0; font-size: 1rem; color: var(--red); }
+.player-error { grid-area: media; margin: 0; font-size: 1rem; color: var(--danger); }
 
 /* Moodle-hosted episodes */
 .moodle-container { padding: 0; }

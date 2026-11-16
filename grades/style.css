@@ -164,7 +164,7 @@
     top: 0.02rem;
     font: 700 1.75rem/1.2 var(--font-hand);
 }
-.marks-bad li::before { content: "✗"; color: var(--red); }
+.marks-bad li::before { content: "✗"; color: var(--danger); }
 .marks-good li::before { content: "✓"; color: var(--ink); }
 
 /* ---------- dark mode switch ---------- */

@@ -10,29 +10,29 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-<meta name="theme-color" content="#fbfcfb" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#1c2924" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f7f4fc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1e1a2b" media="(prefers-color-scheme: dark)">
 <style>
 @font-face{font-family:"Archivo";src:url("../assets/fonts/archivo.woff2") format("woff2");font-weight:400 900;font-stretch:62% 125%;font-display:swap}
 @font-face{font-family:"Source Sans 3";src:url("../assets/fonts/source-sans-3.woff2") format("woff2");font-weight:400 700;font-display:swap}
 @font-face{font-family:"Source Sans 3";src:url("../assets/fonts/source-sans-3-italic.woff2") format("woff2");font-weight:400 700;font-style:italic;font-display:swap}
 @font-face{font-family:"Caveat";src:url("../assets/fonts/caveat.woff2") format("woff2");font-weight:500 700;font-display:swap}
 :root{
-  --bg:#fbfcfb; --paper:#ffffff; --ink:#20242c; --muted:#5a6472; --line:#cfd8e3; --soft:#eef2f6; --head:#1c2f7a; --grid:#e2eaf1; --hilite:#ffe45c;
-  --red:#cf2a27; --red-soft:#fbe9ec;
+  --bg:#f7f4fc; --paper:#ffffff; --ink:#25212f; --muted:#675f7e; --line:#dcd3ef; --soft:#f0ebfa; --head:#3d2f73; --hilite:#e4d9fc;
+  --red:#7c5cd0; --red-soft:#efe8fd;
   --gf:#3b5b8c; --gf-bg:#e8eef7; --spf:#c4122f; --spf-bg:#fbe9ec; --ef:#2d7a4f; --ef-bg:#e5f3ea;
   --ozf:#9a6a00; --ozf-bg:#fbf1da; --fms:#6b4bb0; --fms-bg:#efe9fa; --bili:#0f7c86; --bili-bg:#e1f4f5;
-  --mark:#ffe45c; --shadow:none;
+  --mark:#ddd0fb; --shadow:none;
   --r:6px;
 }
 @media (prefers-color-scheme:dark){
-  :root{--bg:#1c2924; --paper:#24332d; --ink:#e3e5db; --muted:#a5b1a8; --line:#3d4d45; --soft:#2d3e37; --head:#f4f2e8; --grid:rgba(255,255,255,.045); --hilite:rgba(244,214,92,.3);
-    --red:#ff9685; --red-soft:#3a1d22; --gf:#8fb0e6; --gf-bg:#1f2a3b; --spf:#ff7d8c; --spf-bg:#3a1d22; --ef:#7fd2a0; --ef-bg:#19301f;
-    --ozf:#e8c167; --ozf-bg:#352b14; --fms:#b9a2f0; --fms-bg:#2a2340; --bili:#6fd3dc; --bili-bg:#163033; --mark:#7a5f00; --shadow:none}
+  :root{--bg:#1e1a2b; --paper:#282339; --ink:#e2deec; --muted:#aaa2c2; --line:#3c3554; --soft:#332d48; --head:#e9e2fd; --hilite:rgba(187,166,245,.24);
+    --red:#bba6f5; --red-soft:#2f2846; --gf:#8fb0e6; --gf-bg:#1f2a3b; --spf:#ff7d8c; --spf-bg:#3a1d22; --ef:#7fd2a0; --ef-bg:#19301f;
+    --ozf:#e8c167; --ozf-bg:#352b14; --fms:#b9a2f0; --fms-bg:#2a2340; --bili:#6fd3dc; --bili-bg:#163033; --mark:#5b4a96; --shadow:none}
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth; scroll-padding-top:140px}
-body{margin:0;background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:26px 26px;color:var(--ink);font:17px/1.5 "Source Sans 3",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background-color:var(--bg);color:var(--ink);font:17px/1.5 "Source Sans 3",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 h1,h2,h3{font-family:Archivo,system-ui,sans-serif;font-stretch:112%;margin:0;letter-spacing:-.015em}
 .hero h1,.sh h3,.dh h2{color:var(--head)}
 :focus-visible{outline:2.5px solid var(--red);outline-offset:2px}
