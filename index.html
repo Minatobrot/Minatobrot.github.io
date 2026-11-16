@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panumics Portfolio</title>
+    <title>Panumic's portfolio</title>
+    <meta name="description" content="Panumic's projects: class podcasts, the Panum Grades browser extension and a searchable overview of the KSA curriculum.">
     <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png">
@@ -13,62 +14,82 @@
     <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-touch-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="favicon/mstile-150x150.png">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#fbfcfb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1c2924" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-    <header>
-        <h1>Hello, I'm Panumic</h1>
-        <p>a human being, I guess</p>
+    <header class="site-bar sheet">
+        <a class="site-mark" href="./" aria-current="page">
+            <img src="favicon/favicon-96x96.png" alt="" width="34" height="34">panumic
+        </a>
+        <nav class="site-nav" aria-label="Projects">
+            <a href="podcasts/">Podcasts</a>
+            <a href="grades/">Panum Grades</a>
+            <a href="lehrplan/">Lehrplan</a>
+        </nav>
     </header>
 
-    <main>
-        <section class="intro">
-            <p>Welcome to my portfolio</p>
+    <main class="sheet">
+        <section class="hello">
+            <h1>Hello, I'm Panumic</h1>
+            <p class="hello-note hand">
+                a human being, I guess
+                <svg class="pen" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 9c38-6 80-7 122-3s96 5 172-3"/></svg>
+            </p>
+            <p class="hello-intro">Welcome to my portfolio. Everything I've built so far is listed below.</p>
         </section>
 
         <section id="projects">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                <a href="podcasts/" class="project-card">
-                    <h3>Podcasts</h3>
-                    <p>Podcasts von M2A und S2E. Klickt hier, um auf die Podcasts zuzugreifen.</p>
-                    <span class="btn">View Project</span>
-                </a>
-                <a href="grades/" class="project-card">
-                    <h3>Panum Grades</h3>
-                    <p>An extension to enhance your Schulnetz experience with new features and improvements.</p>
-                    <span class="btn">View Project</span>
-                </a>
-                <!-- Add more projects here in the future -->
-                <a href="#" class="project-card" style="opacity: 0.5; cursor: default;">
-                    <h3>Godot project</h3>
-                    <p>what could it be?</p>
-                </a>
-                <!-- Add more projects here in the future -->
-                <a href="#" class="project-card" style="opacity: 0.5; cursor: default;">
-                    <h3>More Coming Soon</h3>
-                    <p>Stay tuned for more exciting projects.</p>
-                </a>
-            </div>
+            <h2 class="toc-title">My projects</h2>
+            <ul class="toc">
+                <li>
+                    <a href="podcasts/" class="toc-row">
+                        <h3><span>Podcasts</span></h3>
+                        <p>Music podcasts recorded by the classes M2a and S2e, one genre per episode. In German.</p>
+                        <span class="toc-go">Listen</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="grades/" class="toc-row">
+                        <h3><span>Panum Grades</span></h3>
+                        <p>An extension to enhance your Schulnetz experience with new features and improvements.</p>
+                        <span class="toc-go">View project</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="lehrplan/" class="toc-row">
+                        <h3><span>Lehrplan KSA</span></h3>
+                        <p>Every topic in the Kantonsschule Ausserschwyz curriculum, searchable by class, profile and subject. In German.</p>
+                        <span class="toc-go">Browse topics</span>
+                    </a>
+                </li>
+                <li>
+                    <div class="toc-row is-pending">
+                        <h3>Godot project</h3>
+                        <p>what could it be?</p>
+                        <span class="toc-go">not yet</span>
+                    </div>
+                </li>
+                <li>
+                    <div class="toc-row is-pending">
+                        <h3>More coming soon</h3>
+                        <p>Stay tuned for more exciting projects.</p>
+                        <span class="toc-go">not yet</span>
+                    </div>
+                </li>
+            </ul>
         </section>
     </main>
 
-    <footer>
+    <footer class="site-foot sheet">
         <p>&copy; 2026 panumic. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
-
-
-
-
-
-

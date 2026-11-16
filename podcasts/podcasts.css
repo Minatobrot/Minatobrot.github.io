@@ -1,0 +1,252 @@
+/* Podcast pages. The episode blocks in m2a/ and s2e/ are written by
+   podcast_dashboard.py, so everything here styles that markup as it is. */
+
+/* ---------- class chooser + overview (podcasts/index.html) ---------- */
+
+.class-list { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
+.class-list > li { border-bottom: 1px solid var(--rule); }
+.class-list .toc-row { grid-template-columns: minmax(0, 22rem) minmax(0, 1fr) auto; }
+@media (max-width: 760px) { .class-list .toc-row { grid-template-columns: 1fr; } }
+
+.overview { margin-top: 4.5rem; }
+.overview h2 { margin-bottom: 0.5rem; }
+.overview-note { color: var(--muted); margin-bottom: 1.4rem; }
+.overview-table { width: 100%; border-collapse: collapse; border-top: 2px solid var(--ink); }
+.overview-table th, .overview-table td {
+    text-align: left;
+    vertical-align: baseline;
+    padding: 0.7rem 1.5rem 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+}
+.overview-table thead th { font: 700 1rem/1.2 var(--font-body); color: var(--muted); }
+.overview-table tbody th {
+    font: 700 1.2rem/1.2 var(--font-display);
+    font-stretch: 112%;
+    color: var(--ink);
+    white-space: nowrap;
+}
+.overview-table td a { font: 600 1.4rem/1.15 var(--font-hand); text-decoration-color: transparent; }
+.overview-table td a:hover { text-decoration-color: var(--red); }
+.overview-table .on-moodle {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    white-space: nowrap;
+}
+.overview-table .none { color: var(--muted); }
+.overview-table tbody tr { animation: rise 0.4s ease-out backwards; }
+
+/* ---------- episode tools (built by podcasts.js) ---------- */
+
+.class-switch { margin: 1rem 0 0; }
+
+.ep-tools { padding-bottom: 1.6rem; }
+.ep-count { margin: 0 0 0.9rem; color: var(--muted); }
+.ep-count b { color: var(--text); }
+.ep-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.ep-filters button {
+    font: 600 1rem/1.2 var(--font-body);
+    color: var(--ink);
+    background: transparent;
+    border: 1.5px solid var(--rule);
+    border-radius: 4px;
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+.ep-filters button:hover { border-color: var(--ink); }
+.ep-filters button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--on-ink); }
+.ep-jump { display: flex; flex-wrap: wrap; gap: 0.15rem 1.1rem; margin: 0; padding: 0; list-style: none; }
+.ep-jump a { font: 600 1.45rem/1.3 var(--font-hand); text-decoration-color: transparent; }
+.ep-jump a:hover { text-decoration-color: var(--red); }
+.ep-jump li[hidden] { display: none; }
+
+/* ---------- episodes ---------- */
+
+.podcast-grid { display: block; border-top: 2px solid var(--ink); }
+
+.podcast-card {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-areas:
+        "title  media"
+        "author media"
+        "more   more";
+    column-gap: 2.5rem;
+    align-items: center;
+    padding: 1.5rem 0 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    scroll-margin-top: 1.5rem;
+}
+.podcast-card[hidden] { display: none; }
+
+.podcast-card > h3 {
+    grid-area: title;
+    align-self: end;
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    justify-self: start;
+    background: linear-gradient(var(--hilite), var(--hilite)) no-repeat 0 85% / 0% 62%;
+    transition: background-size 0.35s ease-out;
+}
+.podcast-card.is-playing > h3,
+.podcast-card:target > h3 { background-size: 100% 62%; }
+
+.podcast-author {
+    grid-area: author;
+    align-self: start;
+    margin: 0.15rem 0 0;
+    font: 600 1.55rem/1.15 var(--font-hand);
+    color: var(--ink);
+}
+
+.podcast-card > audio,
+.podcast-card > .player,
+.podcast-card > .moodle-container { grid-area: media; min-width: 0; }
+.podcast-card > audio { width: 100%; }
+.podcast-card > audio.is-enhanced { display: none; }
+
+/* custom player */
+.player { display: flex; align-items: center; gap: 0.9rem; }
+.player-btn {
+    flex: none;
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--on-ink);
+    cursor: pointer;
+    transition: background-color 0.15s, transform 0.12s;
+}
+.player-btn:hover { background: var(--red); }
+.player-btn:active { transform: scale(0.94); }
+.player-btn svg { width: 1.15rem; height: 1.15rem; fill: currentColor; }
+.player-btn .i-pause, .is-playing .player-btn .i-play { display: none; }
+.is-playing .player-btn .i-pause { display: block; }
+
+.player-seek {
+    --p: 0%;
+    flex: 1;
+    min-width: 0;
+    height: 1.6rem;
+    margin: 0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+}
+.player-seek::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--ink) var(--p), var(--rule) var(--p));
+}
+.player-seek::-moz-range-track { height: 4px; border-radius: 2px; background: var(--rule); }
+.player-seek::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--ink); }
+.player-seek::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: var(--ink);
+    border: 0;
+}
+.player-seek::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--ink); border: 0; }
+.player-seek:disabled { cursor: default; opacity: 0.55; }
+
+.player-time {
+    flex: none;
+    min-width: 6.2em;
+    text-align: right;
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+}
+
+.player-eq { flex: none; display: flex; align-items: end; gap: 3px; width: 17px; height: 16px; opacity: 0; transition: opacity 0.2s; }
+.is-playing .player-eq { opacity: 1; }
+.player-eq i { flex: 1; height: 3px; background: var(--red); border-radius: 1px; transform-origin: bottom; }
+.is-playing .player-eq i { height: 100%; animation: eq 0.9s ease-in-out infinite alternate; }
+.is-playing .player-eq i:nth-child(2) { animation-duration: 0.6s; animation-delay: -0.3s; }
+.is-playing .player-eq i:nth-child(3) { animation-duration: 0.75s; animation-delay: -0.5s; }
+@keyframes eq { from { transform: scaleY(0.2); } to { transform: scaleY(1); } }
+
+.player-error { grid-area: media; margin: 0; font-size: 1rem; color: var(--red); }
+
+/* Moodle-hosted episodes */
+.moodle-container { padding: 0; }
+.moodle-button {
+    display: inline-block;
+    padding: 0.62rem 1.05rem;
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    font-weight: 650;
+    line-height: 1.25;
+    text-decoration: none;
+    background: none;
+    transition: background-color 0.15s;
+}
+.moodle-button:hover { background: var(--hilite); }
+.moodle-note { margin: 0.45rem 0 0; font-size: 0.95rem; color: var(--muted); }
+
+/* details */
+.podcast-card > details { grid-area: more; margin-top: 0.9rem; }
+.podcast-card summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    list-style: none;
+}
+.podcast-card summary::-webkit-details-marker { display: none; }
+.podcast-card summary::before {
+    content: "";
+    width: 0.45em;
+    height: 0.45em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease-out;
+}
+.podcast-card details[open] > summary::before { transform: rotate(45deg) translate(-2px, -2px); }
+.podcast-card summary:hover { color: var(--ink); }
+
+@supports (interpolate-size: allow-keywords) {
+    .podcast-card details { interpolate-size: allow-keywords; }
+    .podcast-card details::details-content {
+        block-size: 0;
+        overflow: clip;
+        transition: block-size 0.3s ease-out, content-visibility 0.3s allow-discrete;
+    }
+    .podcast-card details[open]::details-content { block-size: auto; }
+}
+
+.details-content { max-width: 44em; padding: 0.8rem 0 0.3rem 1.1rem; margin-left: 0.2em; border-left: 1.5px solid var(--margin); }
+.podcast-details { list-style: none; margin: 0; padding: 0; }
+.podcast-item { margin-bottom: 0.45rem; white-space: pre-line; }
+.podcast-item strong { color: var(--ink); }
+.podcast-sources h4 { margin: 0.9rem 0 0.3rem !important; }
+.podcast-sources ul { margin: 0; padding-left: 1.1rem; }
+.podcast-sources li { margin-bottom: 0.25rem; font-size: 1rem; overflow-wrap: anywhere; }
+
+@media (max-width: 760px) {
+    .podcast-card {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "title" "author" "media" "more";
+        row-gap: 0.2rem;
+    }
+    .podcast-card > audio,
+    .podcast-card > .player,
+    .podcast-card > .moodle-container,
+    .player-error { margin-top: 0.9rem; }
+    .player-eq { display: none; }
+    .overview-table th, .overview-table td { padding-right: 0.8rem; }
+    .overview-table tbody th { white-space: normal; font-size: 1.05rem; }
+    .overview-table .on-moodle { display: block; margin-left: 0; }
+}

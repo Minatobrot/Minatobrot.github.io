@@ -85,6 +85,9 @@ def extract_podcasts(content):
         # Sources
         sources = []
         m_source_ul = re.search(r'<ul class="source-list">(.*?)</ul>', inner_html, re.DOTALL)
+        if not m_source_ul:
+            # Format written by generate_html_block()
+            m_source_ul = re.search(r'<div class="podcast-sources">.*?<ul>(.*?)</ul>', inner_html, re.DOTALL)
         if m_source_ul:
             raw_items = re.findall(r'<li>(.*?)</li>', m_source_ul.group(1))
             for item in raw_items:
@@ -212,7 +215,7 @@ def generate_html_block(title, details, link, authors, sources):
 
 # --- GUI ---
 
-# Theme Colors (Matching style.css)
+# Theme Colors (dashboard window only, independent of the website)
 COLORS = {
     'bg': '#121212',
     'card_bg': '#1e1e1e',

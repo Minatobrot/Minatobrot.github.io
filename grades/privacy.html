@@ -5,17 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutz — Panum Grades</title>
     <meta name="description" content="Datenschutzrichtlinie für Panum Grades. Alle Daten bleiben lokal auf deinem Gerät.">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
-    <meta name="theme-color" content="#0a0f1a">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="favicon/mstile-150x150.png">
+    <meta name="theme-color" content="#fbfcfb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1c2924" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="../assets/site.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
 
     <header id="navbar">
-        <nav class="container nav-bar">
+        <nav class="sheet nav-bar" aria-label="Panum Grades">
             <a href="index.html" class="nav-logo">
-                <span class="nav-logo-icon">🎓</span> Panum Grades
+                <img src="favicon/favicon-96x96.png" alt="" width="34" height="34"> Panum Grades
             </a>
             <div class="nav-links">
                 <a href="index.html#features">Funktionen</a>
@@ -25,7 +41,7 @@
             <div class="nav-actions">
                 <a href="index.html#download" class="btn btn-primary btn-sm">Kostenlos installieren</a>
             </div>
-            <button class="nav-mobile-toggle" aria-label="Menü umschalten">
+            <button class="nav-mobile-toggle" aria-label="Menü umschalten" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </nav>
@@ -97,34 +113,33 @@
         </div>
     </main>
 
-    <footer>
-        <div class="container footer-inner">
-            <div class="footer-brand">
-                <span class="footer-logo">🎓 Panum Grades</span>
-                <p class="footer-tagline">Macht schulNetz erträglich seit 2024.</p>
+    <footer class="g-foot sheet">
+        <div class="footer-brand">
+            <span class="footer-logo"><img src="favicon/favicon-96x96.png" alt="" width="28" height="28"> Panum Grades</span>
+            <p class="footer-tagline">Macht schulNetz erträglich seit 2024.</p>
+            <p class="footer-home">Ein Projekt von <a href="../">panumic</a></p>
+        </div>
+        <div class="footer-nav">
+            <div class="footer-col">
+                <h4>Produkt</h4>
+                <a href="index.html#features">Funktionen</a>
+                <a href="index.html#download">Download</a>
+                <a href="index.html#faq">FAQ</a>
             </div>
-            <div class="footer-nav">
-                <div class="footer-col">
-                    <h4>Produkt</h4>
-                    <a href="index.html#features">Funktionen</a>
-                    <a href="index.html#download">Download</a>
-                    <a href="index.html#faq">FAQ</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Rechtliches</h4>
-                    <a href="about.html">Über uns</a>
-                    <a href="privacy.html">Datenschutz</a>
-                    <a href="imprint.html">Impressum</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Kontakt</h4>
-                    <a href="contact.html">Kontakt</a>
-                    <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer">GitHub</a>
-                </div>
+            <div class="footer-col">
+                <h4>Rechtliches</h4>
+                <a href="about.html">Über uns</a>
+                <a href="privacy.html">Datenschutz</a>
+                <a href="imprint.html">Impressum</a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Minoshek Kishokumar. Alle Rechte vorbehalten.</p>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <a href="contact.html">Kontakt</a>
+                <a href="https://github.com/Minatobrot/Panum-Grades" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Minoshek Kishokumar. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 

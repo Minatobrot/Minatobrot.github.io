@@ -4,17 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Podcasts von S2e</title>
+    <meta name="description" content="Die Musik-Podcasts der Klasse S2e: eine Episode pro Musikstil.">
     <link rel="apple-touch-icon" sizes="57x57" href="../../favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../../favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../../favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../../favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../../favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../../favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../../favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../../favicon/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../../favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../../favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../favicon/favicon-16x16.png">
-    <link rel="stylesheet" href="../../style.css">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../../favicon/mstile-150x150.png">
+    <meta name="theme-color" content="#fbfcfb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1c2924" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="../../assets/site.css">
+    <link rel="stylesheet" href="../podcasts.css">
+    <script src="../podcasts.js" defer></script>
 </head>
 <body>
 
-<header>
-    <h1>Podcasts von S2e</h1>
-    <p>Eine Sammlung der S2e Podcasts</p>
+<header class="site-bar sheet">
+    <a class="site-mark" href="../../">
+        <img src="../../favicon/favicon-96x96.png" alt="" width="34" height="34">panumic
+    </a>
+    <nav class="site-nav" aria-label="Projekte">
+        <a href="../../podcasts/" aria-current="true">Podcasts</a>
+        <a href="../../grades/">Panum Grades</a>
+        <a href="../../lehrplan/">Lehrplan</a>
+    </nav>
 </header>
+
+<div class="sheet">
+<div class="page-head">
+    <p class="crumbs"><a href="../">Podcasts</a> / S2e</p>
+    <h1>Podcasts von S2e</h1>
+    <p class="lead">Eine Sammlung der S2e Podcasts</p>
+    <p class="class-switch">Zur anderen Klasse: <a href="../m2a/">Podcasts von M2a</a></p>
+</div>
+
+<div class="ep-tools" id="ep-tools" hidden></div>
 
 <main class="podcast-grid">
 
@@ -288,27 +321,11 @@
 </article>
 
 </main>
+</div>
 
-<footer>
-    <p>&copy; 2026 Hosted by Panumic | Bildungszwecke</p>
+<footer class="site-foot sheet">
+    <p>&copy; 2026 Hosted by Panumic | Bildungszwecke | <a href="https://archive.org">Medien via Internet Archive</a></p>
 </footer>
 
-</body>
-
-<style>
-    .moodle-indicator {
-        display: inline-block;
-        background-color: #f39c12;
-        color: white;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 0.6em; /* Smaller relative to h3 */
-        margin-left: 8px;
-        vertical-align: middle;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-</style>
 </body>
 </html>

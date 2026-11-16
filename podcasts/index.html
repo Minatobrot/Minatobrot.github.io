@@ -4,36 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Podcasts - Panumic</title>
+    <meta name="description" content="Musik-Podcasts der Klassen M2a und S2e.">
     <link rel="apple-touch-icon" sizes="57x57" href="../favicon/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="../favicon/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="../favicon/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../favicon/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../favicon/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../favicon/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../favicon/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../favicon/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
-    <link rel="stylesheet" href="../style.css">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="../favicon/mstile-150x150.png">
+    <meta name="theme-color" content="#fbfcfb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#1c2924" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="../assets/site.css">
+    <link rel="stylesheet" href="podcasts.css">
+    <script src="podcasts.js" defer></script>
 </head>
 <body>
-    <header>
+
+<header class="site-bar sheet">
+    <a class="site-mark" href="../">
+        <img src="../favicon/favicon-96x96.png" alt="" width="34" height="34">panumic
+    </a>
+    <nav class="site-nav" aria-label="Projekte">
+        <a href="../podcasts/" aria-current="true">Podcasts</a>
+        <a href="../grades/">Panum Grades</a>
+        <a href="../lehrplan/">Lehrplan</a>
+    </nav>
+</header>
+
+<main class="sheet">
+    <div class="page-head">
         <h1>Podcasts</h1>
-        <p>Wähle eine Klasse</p>
-    </header>
+        <p class="lead">Wähle eine Klasse</p>
+    </div>
 
-    <main>
-        <section id="projects">
-            <div class="projects-grid">
-                <a href="m2a/" class="project-card">
-                    <h3>Podcasts von M2a</h3>
+    <section id="projects">
+        <ul class="toc class-list">
+            <li>
+                <a href="m2a/" class="toc-row">
+                    <h3><span>Podcasts von M2a</span></h3>
                     <p>Hier klicken, um auf die Podcasts von M2a zuzugreifen.</p>
-                    <span class="btn">Anhören</span>
+                    <span class="toc-go">Anhören</span>
                 </a>
-                <a href="s2e/" class="project-card">
-                    <h3>Podcasts von S2e</h3>
+            </li>
+            <li>
+                <a href="s2e/" class="toc-row">
+                    <h3><span>Podcasts von S2e</span></h3>
                     <p>Hier klicken, um auf die Podcasts von S2e zuzugreifen.</p>
-                    <span class="btn">Anhören</span>
+                    <span class="toc-go">Anhören</span>
                 </a>
-            </div>
-        </section>
-    </main>
+            </li>
+        </ul>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 Panumic.</p>
-    </footer>
+    <section class="overview" id="overview" data-classes="m2a,s2e" hidden>
+        <h2>Alle Themen auf einen Blick</h2>
+        <p class="overview-note">Ein Klick auf die Namen führt direkt zur Episode.</p>
+        <div class="overview-body"></div>
+    </section>
+</main>
+
+<footer class="site-foot sheet">
+    <p>&copy; 2026 Panumic.</p>
+</footer>
+
 </body>
 </html>
