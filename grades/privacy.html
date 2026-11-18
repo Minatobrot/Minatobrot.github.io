@@ -55,11 +55,11 @@
             </a>
 
             <h1>Datenschutzrichtlinie</h1>
-            <p class="subpage-lead">Kurzfassung: Wir sammeln keine Daten. Keine. Überhaupt keine. Hier ist die ausführliche Version.</p>
+            <p class="subpage-lead">Kurzfassung: Standardmässig bleibt alles auf deinem Gerät. Nur wenn du den Klassenkalender freiwillig aktivierst, gehen Kalendereinträge an unseren Server – nie Noten oder Login-Daten.</p>
 
             <div class="card-block">
                 <h3>Zusammenfassung in einem Satz</h3>
-                <p>Panum Grades speichert alle Daten lokal auf deinem Gerät im eingebauten Speicher deines Browsers. Es werden nie Daten an irgendeinen Server übertragen.</p>
+                <p>Panum Grades speichert alle Daten lokal auf deinem Gerät im eingebauten Speicher deines Browsers. Standardmässig werden keine Daten an einen Server übertragen.</p>
             </div>
 
             <h2>Auf welche Daten greift Panum Grades zu?</h2>
@@ -72,7 +72,7 @@
                 <li><strong>Browser localStorage</strong> — nur auf der schulNetz-Domain verfügbar, beschränkt auf dein Browser-Profil.</li>
                 <li><strong>Browser Extension Storage</strong> (chrome.storage.local / browser.storage.local) — lokal in deinen Browser-Extension-Daten gespeichert.</li>
             </ul>
-            <p>Keine dieser Speichermethoden beinhaltet einen externen Server. Beide werden gelöscht, wenn du die Erweiterung deinstallierst oder deine Browserdaten löschst.</p>
+            <p>Keine dieser Speichermethoden beinhaltet einen externen Server (Ausnahme: der freiwillige Klassenkalender, siehe unten). Beide werden gelöscht, wenn du die Erweiterung deinstallierst oder deine Browserdaten löschst.</p>
 
             <h2>Welche Daten werden NICHT gesammelt?</h2>
             <ul>
@@ -81,11 +81,13 @@
                 <li>Keine Cookies (wir setzen keine)</li>
                 <li>Keine IP-Adressen</li>
                 <li>Kein Browserverlauf</li>
-                <li>Keine Daten, die an irgendeinen Server, API oder Drittanbieter übertragen werden</li>
+                <li>Nie Noten, Login-Daten oder schulNetz-Sitzungen</li>
             </ul>
 
             <h2>Macht die Erweiterung Netzwerkanfragen?</h2>
-            <p>Nein. Panum Grades macht keine HTTP-Requests, Fetch-Aufrufe oder WebSocket-Verbindungen. Die Erweiterung hat kein Backend, keinen Server und keine API. Alles läuft offline in deinem Browser.</p>
+            <p>Standardmässig nicht. Notenrechner, Durchschnitte, Pluspunkte und alle anderen Funktionen laufen offline in deinem Browser.</p>
+            <p><strong>Klassenkalender (freiwillig):</strong> Nur wenn du ihn aktivierst und dem Teilen zustimmst, verbindet sich die Erweiterung mit calendar.panumic.com. Gesendet werden: Kalendereinträge (Titel, Fach, Datum, Notiz), Schule und Klasse, gehashte Namen der Klassenliste und dein Kurzname (z.B. „Anna M.“). <strong>Nie gesendet werden Noten, Login-Daten oder schulNetz-Sitzungen.</strong> Du kannst den Kalender jederzeit nur lokal nutzen und mit „Meine Daten löschen“ alles auf dem Server entfernen.</p>
+            <p><strong>Feedback-Formular:</strong> Nur wenn du im Popup aktiv Feedback abschickst, wird dein Text an ein Google-Formular gesendet.</p>
 
             <h2>Berechtigungen erklärt</h2>
             <p>Die Erweiterung fordert folgende Browser-Berechtigungen an:</p>
@@ -139,7 +141,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Minoshek Kishokumar. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 Panum Grades. Alle Rechte vorbehalten.</p>
         </div>
     </footer>
 
